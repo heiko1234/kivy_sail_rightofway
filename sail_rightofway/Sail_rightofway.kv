@@ -16,48 +16,13 @@
 
 # kivymd 1.1.1
 
-# TODO: MyTogglebutton / MagicButtn
 
-<MagicButton@MagicBehavior+MDRectangleFlatButton>
-# <MyToggleButton@MDToggleButton+MDFlatButton>
-# <MyToggleButton@MDToggleButton+MDRoundFlatButton>
-<MyToggleButton@MDRoundFlatButton>
-
-# https://kivymd.readthedocs.io/en/1.1.1/behaviors/togglebutton/index.html
-# https://kivymd.readthedocs.io/en/1.1.1/behaviors/magic/
-
-# Video: ToggleButton # https://www.youtube.com/watch?v=0KinRr5Mpf0
-
-# https://kivymd.readthedocs.io/en/1.1.1/components/button/index.html
-# MDRectangleFlatButton:
-#     text: "Entrance"
-#     theme_text_color: "Custom"
-#     text_color: "blue"
-#     line_color: "red"
-#     halign: "center"
-#     size_hint: (1, 0.5)
-#     on_release: 
-#         root.entrance_button_behavior()
-
-
-# MagicButton:
-#     text: "GROW EFFECT"
-#     on_release: self.grow()
-#     size_hint: (0.5, 1)
-
-# MyToggleButton:
-#     text: "Mic"
-#     id: mic_onoff
-#     group: "x"
-#     background_down: "green"
-#     line_color: "black"
-#     text_color: "black"
 
 
 
 MDScreenManager:
     WelcomeWindow:
-    CommanderWindow:
+    QuizWindow:
 
 
 <WelcomeWindow>:
@@ -69,7 +34,7 @@ MDScreenManager:
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
         Image: 
-            source: "assets/logos/SAIL_Commander.png"
+            source: "assets/logos/SAIL_Right_of_way.png"
 
         # MDRectangleFlatButton:
         MDRoundFlatIconButton:
@@ -103,9 +68,9 @@ MDScreenManager:
             # md_bg_color: "#e7e4c0"
             # https://pictogrammers.com/library/mdi/
             # https://github.com/kivymd/KivyMD/blob/master/kivymd/icon_definitions.py
-            left_action_items: [["sail-boat", lambda x: nav_drawer.set_state("open"), "", ""]]
+            left_action_items: [["sail-boat", lambda x: left_nav_drawer.set_state("open"), "", ""]]
 
-            right_action_items: [["information-variant", lambda x: left_nav_drawer.set_state("open"), "", ""]]
+            right_action_items: [["information-variant", lambda x: right_nav_drawer.set_state("open"), "", ""]]
 
         GridLayout:
             cols: 1
@@ -119,31 +84,77 @@ MDScreenManager:
                 #pos_hint: {"x": 0, "y": 0}
                 #keep_ratio: True
                 # allow_stretch: True
-                source: "assets/sails/sail_down_bb.png"
+                source: "assets/sails/Stb_start.png"
                 # size_hint: 
                 size: 360, 360
 
         GridLayout:
             cols: 1
-            size_hint: (0.6, 0.2)
+            size_hint: (0.99, 0.1)
             # pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
             MDLabel:
-                id:command_hints
-                text:"Bitte Kommandos eingeben"
-                size_hint: (1, 0.5)
+                text:"Ich bin"
+                # size_hint: (1, 0.5)
                 halign: "center"
                 text_color: "black"
 
-            
-            TextInput:
-                id: command_text
-                multiline: False
-                size_hint: (1, 0.5)
+        GridLayout:
+            cols: 2
+            size_hint: (0.99, 0.2)
+            # pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDRoundFlatIconButton:
+                text: "ausweichpflichtig"
+                icon: "arrow-left-right-bold"
+                theme_text_color: "Custom"
+                text_color: "blue"
+                line_color: "blue"
+                halign: "center"
+                size_hint: (0.1, 0.1)
+                pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                on_release: 
+                    pass
+
+            MDRoundFlatIconButton:
+                text: "kurshaltepflichtig"
+                icon: "sail-boat"
+                theme_text_color: "Custom"
+                text_color: "blue"
+                line_color: "blue"
+                halign: "center"
+                size_hint: (0.1, 0.1)
+                pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                on_release: 
+                    pass
+
+        GridLayout:
+            cols: 1
+            size_hint: (0.99, 0.1)
+            # pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDLabel:
+                text:""
+                # size_hint: (1, 0.1)
                 halign: "center"
                 text_color: "black"
 
+        GridLayout:
+            cols: 1
+            size_hint: (0.99, 0.2)
+            # pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
+            MDRoundFlatIconButton:
+                text: "unklare Situation: ich weiche aus"
+                icon: "arrow-left-right-bold"
+                theme_text_color: "Custom"
+                text_color: "blue"
+                line_color: "blue"
+                halign: "center"
+                size_hint: (0.1, 0.1)
+                pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                on_release: 
+                    pass
 
         MDBottomAppBar:
 
@@ -154,7 +165,7 @@ MDScreenManager:
 
 
     MDNavigationDrawer:
-        id: nav_drawer
+        id: left_nav_drawer
         radius: (0, 16, 16, 0)
         type: "modal"
         # https://kivymd.readthedocs.io/en/1.1.1/components/navigationdrawer/index.html
@@ -177,7 +188,7 @@ MDScreenManager:
 
 
     MDNavigationDrawer:
-        id: left_nav_drawer
+        id: right_nav_drawer
         anchor: "right"
         radius: (0, 16, 16, 0)
         type: "modal"
@@ -252,15 +263,13 @@ MDScreenManager:
             MDNavigationDrawerItem:
                 text: "heiko1234/"
             MDNavigationDrawerItem:
-                text: "kivy_sailcommander/"
+                text: "kivy_rightofway/"
             MDNavigationDrawerItem:
                 text: "issues"
 
             MDNavigationDrawerDivider:
 
 
-
-# https://github.com/heiko1234/kivy_sailcommander/issues
 
 
 
