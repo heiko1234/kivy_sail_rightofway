@@ -61,7 +61,7 @@ presplash.filename = assets/logos/SAIL_Right_of_way_white.png
 #icon.filename = %(source.dir)s/data/icon.png
 # Kreis
 # icon.filename = ./assets/Health_logo.png
-icon.filename = ./sailcommander/assets/logos/SAIL_Right_of_way.png
+icon.filename = ./assets/logos/SAIL_Right_of_way.png
 
 # (list) Supported orientations
 # Valid options are: landscape, portrait, portrait-reverse or landscape-reverse
@@ -141,7 +141,7 @@ fullscreen = 0
 #android.sdk_path =
 # android.sdk_path = /home/heiko/Repos/kivy/kivy_health_repo/kivy_health/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
 
-android.sdk_path = /home/heiko/Repos/kivy/kivy_sail_right_of_way/kivy_sail_rightofway/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
+android.sdk_path = /home/heiko/Repos/kivy/kivy_sail_right_of_way/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
 
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
