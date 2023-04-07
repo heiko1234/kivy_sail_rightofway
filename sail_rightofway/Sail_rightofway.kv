@@ -23,6 +23,7 @@
 MDScreenManager:
     WelcomeWindow:
     QuizWindow:
+    SetupWindow:
 
 
 <WelcomeWindow>:
@@ -50,6 +51,59 @@ MDScreenManager:
                 root.entrance_button_behavior()
 
 
+<SetupWindow>:
+    name: "setupwindow"
+
+    number_of_questions: number_of_questions
+
+    GridLayout:
+        cols: 1
+        size_hint: 0.995, 0.995
+
+        GridLayout:
+            cols: 1
+            size_hint: 0.6, 0.6
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            Image: 
+                source: "sail_rightofway/assets/logos/SAIL_logo.png"
+
+            MDLabel:
+                size_hint: (1, 0.2)
+                text: "Anzahl der Fragen"
+                halign: "center"
+
+            GridLayout:
+                cols: 1
+                size_hint: 0.6, 0.6
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                MDTextField:
+                    id: number_of_questions
+                    # size_hint: (1, 0.5)
+                    hint_text: "Nummer eintragen"
+                    helper_text: "Fragenanzahl: 10 - 30"
+                    helper_text_mode: "on_focus"
+
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
+
+            MDRoundFlatIconButton:
+                text: "Zum Spiel"
+                icon: "sail-boat"
+                theme_text_color: "Custom"
+                text_color: "blue"
+                line_color: "blue"
+                halign: "center"
+                size_hint: (0.1, 0.1)
+                pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                on_release: 
+                    root.switch_to_second_view()
+                    root.restart_quiz()
+
+
 <QuizWindow>:
     name: "quizwindow"
 
@@ -57,7 +111,8 @@ MDScreenManager:
 
     # pictures
     sail_png: sail_png
-
+    false_counter: false_counter
+    true_counter: true_counter
 
     GridLayout:
         cols: 1
@@ -71,6 +126,37 @@ MDScreenManager:
             left_action_items: [["sail-boat", lambda x: left_nav_drawer.set_state("open"), "", ""]]
 
             right_action_items: [["information-variant", lambda x: right_nav_drawer.set_state("open"), "", ""]]
+
+        GridLayout:
+            cols: 2
+            size_hint: (0.99, 0.2)
+
+            MDLabel:
+                size_hint: (1, 0.5)
+                text: "Antworten"
+                halign: "center"
+
+            GridLayout:
+                cols: 3
+
+                MDLabel:
+                    id: false_counter
+                    size_hint: (1, 0.5)
+                    text:"0"
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 1, 0, 0, 1
+                MDLabel:
+                    size_hint: (1, 0.5)
+                    text: "/"
+                    halign: "center"
+                MDLabel:
+                    id: true_counter
+                    size_hint: (1, 0.5)
+                    text:"0"
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 0, 1, 0, 1
 
         GridLayout:
             cols: 1
@@ -114,7 +200,8 @@ MDScreenManager:
                 size_hint: (0.1, 0.1)
                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 on_release: 
-                    pass
+                    root.ausweichen()
+                    # pass
 
             MDRoundFlatIconButton:
                 text: "kurshaltepflichtig"
@@ -126,7 +213,8 @@ MDScreenManager:
                 size_hint: (0.1, 0.1)
                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 on_release: 
-                    pass
+                    root.kurshalten()
+                    # pass
 
         GridLayout:
             cols: 1
@@ -134,14 +222,14 @@ MDScreenManager:
             # pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
             MDLabel:
-                text:""
-                # size_hint: (1, 0.1)
+                text:"Alternative Antworten"
+                # size_hint: (1, 0.5)
                 halign: "center"
                 text_color: "black"
 
         GridLayout:
-            cols: 1
-            size_hint: (0.99, 0.1)
+            cols: 2
+            size_hint: (0.99, 0.2)
             # pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
             MDRoundFlatIconButton:
@@ -155,6 +243,20 @@ MDScreenManager:
                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 on_release: 
                     pass
+
+            MDRoundFlatIconButton:
+                text: "nächste Frage"
+                icon: "help"
+                theme_text_color: "Custom"
+                text_color: "blue"
+                line_color: "blue"
+                halign: "center"
+                size_hint: (0.1, 0.2)
+                pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                on_release: 
+                    root.weiter()
+                    # pass
+
 
         MDBottomAppBar:
 
@@ -184,6 +286,18 @@ MDScreenManager:
 
             MDNavigationDrawerLabel:
                 text: "Basics"
+
+            MDNavigationDrawerItem:
+                icon: "sail-boat"
+                text: "Start"
+                on_release: 
+                    root.restart_quiz()
+
+            MDNavigationDrawerItem:
+                icon: "cog"
+                text: "Setup"
+                on_release: 
+                    root.switch_to_setup_view()
 
 
 
