@@ -137,6 +137,8 @@ fullscreen = 0
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
 #android.ndk_path =
 
+
+# TODO
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
 #android.sdk_path =
 # android.sdk_path = /home/heiko/Repos/kivy/kivy_health_repo/kivy_health/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager

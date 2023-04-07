@@ -1,6 +1,6 @@
 
 
-from sail_rightofway.quiz import (quiz_sailing)
+from backup_kivy.quiz import (quiz_sailing)
 
 
 # kurshaltepflichtig    

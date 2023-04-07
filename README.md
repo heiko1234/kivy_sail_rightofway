@@ -95,7 +95,7 @@ java -version #1.8
 
 sudo apt install default-jre
 
-java -verion #11.8
+java -verion #11.0.18
 
 ```
 
@@ -266,6 +266,11 @@ buildozer -v android debug
 
 # switch to dir of bin
 cd ./bin
+
+# adb devices
+# # my personal list of devices
+# # 222be3df
+# # 29477c1e
 
 # transfer apk from ./bin/ folder:
 adb -s 29477c1e install sailcommander-0.1-arm64-v8a_armeabi-v7a-debug.apk
