@@ -273,8 +273,9 @@ cd ./bin
 # # 29477c1e
 
 # transfer apk from ./bin/ folder:
-adb -s 29477c1e install sailcommander-0.1-arm64-v8a_armeabi-v7a-debug.apk
+# adb -s 29477c1e install sailcommander-0.1-arm64-v8a_armeabi-v7a-debug.apk
 
+adb -s 29477c1e install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug.apk
 
 
 ```

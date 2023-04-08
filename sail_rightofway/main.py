@@ -29,17 +29,14 @@ from threading import Thread
 # partial: funktions reverenz + parameter übergabe
 from functools import partial
 
-from quiz import quiz_sailing
-
-
 from kivy.storage.jsonstore import JsonStore
 
 
 
 # init the boat outside of Screen
-boat_questions = quiz_sailing()
-# boat_questions.start()
+from quiz import quiz_sailing
 
+boat_questions = quiz_sailing()
 
 
 
@@ -89,7 +86,8 @@ class SetupWindow(Screen):
         except BaseException:
             question_number = 10
 
-        store = JsonStore("sail_rightofway/numberofquestions.json")
+        # store = JsonStore("sail_rightofway/numberofquestions.json")
+        store = JsonStore("numberofquestions.json")
 
         store.put("question_number", question_number=question_number)
 
@@ -113,7 +111,8 @@ class QuizWindow(Screen):
 
     def restart_quiz(self, *args):
 
-        store = JsonStore("sail_rightofway/numberofquestions.json")
+        # store = JsonStore("sail_rightofway/numberofquestions.json")
+        store = JsonStore("numberofquestions.json")
 
         try:
             store.get("question_number")
@@ -133,9 +132,9 @@ class QuizWindow(Screen):
         output = boat_questions.show_question()
         try:
             if "Schema" not in output:
-                self.sail_png.source = f"sail_rightofway/assets/sails/{output}.png"
+                self.sail_png.source = f"assets/sails/{output}.png"
             else:
-                self.sail_png.source = f"sail_rightofway/assets/schema/{output}.png"
+                self.sail_png.source = f"assets/schema/{output}.png"
         except TypeError:
             pass
 
