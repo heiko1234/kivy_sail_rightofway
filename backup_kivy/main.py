@@ -106,7 +106,7 @@ class QuizWindow(Screen):
         self.manager.current = "setupwindow"
         self.manager.transition.direction="left"
 
-    def any_function():
+    def any_function(self, *args):
         pass
 
     def restart_quiz(self, *args):

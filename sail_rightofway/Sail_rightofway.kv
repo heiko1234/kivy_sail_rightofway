@@ -17,13 +17,15 @@
 # kivymd 1.1.1
 
 
+# https://www.youtube.com/watch?v=d0SQXNSZvKQ  Liste Speichern
+
 
 
 
 MDScreenManager:
     WelcomeWindow:
     QuizWindow:
-    # SetupWindow:
+    SetupWindow:
 
 
 <WelcomeWindow>:
@@ -51,43 +53,57 @@ MDScreenManager:
                 root.entrance_button_behavior()
 
 
-# <SetupWindow>:
-#     name: "setupwindow"
+<SetupWindow>:
+    name: "setupwindow"
 
-#     GridLayout:
-#         cols: 1
-#         size_hint: 0.995, 0.995
+    number_of_questions: number_of_questions
 
-#         GridLayout:
-#             cols: 1
-#             size_hint: 0.6, 0.6
-#             pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    GridLayout:
+        cols: 1
+        size_hint: 0.995, 0.995
 
-#             Image: 
-#                 source: "sail_rightofway/assets/logos/SAIL_logo.png"
+        GridLayout:
+            cols: 1
+            size_hint: 0.6, 0.6
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
-#             MDLabel:
-#                 size_hint: (1, 0.2)
-#                 text: "Anzahl der Fragen"
-#                 halign: "center"
+            Image: 
+                source: "sail_rightofway/assets/logos/SAIL_logo.png"
 
-#             MDLabel:
-#                 text:""
-#                 halign: "center"
-#                 text_color: "black"
+            MDLabel:
+                size_hint: (1, 0.2)
+                text: "Anzahl der Fragen"
+                halign: "center"
 
-#             MDRoundFlatIconButton:
-#                 text: "Zum Spiel"
-#                 icon: "sail-boat"
-#                 theme_text_color: "Custom"
-#                 text_color: "blue"
-#                 line_color: "blue"
-#                 halign: "center"
-#                 size_hint: (0.1, 0.1)
-#                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
-#                 on_release: 
-#                     root.switch_to_second_view()
+            GridLayout:
+                cols: 1
+                size_hint: 0.6, 0.6
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
+                MDTextField:
+                    id: number_of_questions
+                    # size_hint: (1, 0.5)
+                    hint_text: "Nummer eintragen"
+                    helper_text: "Fragenanzahl: 10 - 30"
+                    helper_text_mode: "on_focus"
+
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
+
+            MDRoundFlatIconButton:
+                text: "Zum Spiel"
+                icon: "sail-boat"
+                theme_text_color: "Custom"
+                text_color: "blue"
+                line_color: "blue"
+                halign: "center"
+                size_hint: (0.1, 0.1)
+                pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                on_release: 
+                    root.switch_to_second_view()
+                    root.restart_quiz()
 
 
 <QuizWindow>:
@@ -186,6 +202,7 @@ MDScreenManager:
                 size_hint: (0.1, 0.1)
                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 on_release: 
+                    root.ausweichen()
                     # pass
 
             MDRoundFlatIconButton:
@@ -198,6 +215,7 @@ MDScreenManager:
                 size_hint: (0.1, 0.1)
                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 on_release: 
+                    root.kurshalten()
                     # pass
 
         GridLayout:
@@ -238,7 +256,16 @@ MDScreenManager:
                 size_hint: (0.1, 0.2)
                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 on_release: 
-                    pass
+                    root.weiter()
+                    # pass
+
+
+        MDBottomAppBar:
+
+            # MDTopAppBar:
+            #     title: ""
+            #     icon: "microphone"
+            #     mode: "center"
 
 
     MDNavigationDrawer:
@@ -265,16 +292,14 @@ MDScreenManager:
             MDNavigationDrawerItem:
                 icon: "sail-boat"
                 text: "Start"
-                on_release:
-                    pass
-                    # root.restart_quiz()
+                on_release: 
+                    root.restart_quiz()
 
             MDNavigationDrawerItem:
                 icon: "cog"
                 text: "Setup"
                 on_release: 
-                    pass
-                    # root.switch_to_setup_view()
+                    root.switch_to_setup_view()
 
 
 
@@ -359,6 +384,9 @@ MDScreenManager:
                 text: "issues"
 
             MDNavigationDrawerDivider:
+
+
+
 
 
 

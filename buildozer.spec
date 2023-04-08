@@ -423,6 +423,7 @@ ios.codesign.allowed = false
 
 [buildozer]
 
+# TODO
 # (int) Log level (0 = error only, 1 = info, 2 = debug (with command output))
 log_level = 2
 

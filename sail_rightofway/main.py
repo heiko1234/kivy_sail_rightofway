@@ -29,6 +29,18 @@ from threading import Thread
 # partial: funktions reverenz + parameter übergabe
 from functools import partial
 
+from quiz import quiz_sailing
+
+
+from kivy.storage.jsonstore import JsonStore
+
+
+
+# init the boat outside of Screen
+boat_questions = quiz_sailing()
+# boat_questions.start()
+
+
 
 
 # Define our differeent screens
@@ -45,20 +57,44 @@ class WelcomeWindow(Screen):
         self.manager.current = "quizwindow"
         self.manager.transition.direction="left"
 
+        # boat_questions.start(number_questions = 10)
 
-# class SetupWindow(Screen):
 
-#     number_of_questions = ObjectProperty()
 
-#     def any_function(self, *args):
-#         pass
 
-#     def switch_to_second_view(self, *args):
-#         self.manager.current = "quizwindow"
-#         self.manager.transition.direction="right"
 
-#     def restart_quiz(self, *args):
-#         pass
+class SetupWindow(Screen):
+
+    number_of_questions = ObjectProperty()
+
+    def any_function(self, *args):
+        pass
+
+    def switch_to_second_view(self, *args):
+        self.manager.current = "quizwindow"
+        self.manager.transition.direction="right"
+
+    def restart_quiz(self, *args):
+
+        try:
+            question_number = int(self.number_of_questions.text)
+            if question_number >= 30:
+                question_number = 30
+            elif (question_number <= 30) and (question_number >= 10):
+                question_number = question_number
+
+            elif question_number < 10:
+                question_number = 10
+
+        except BaseException:
+            question_number = 10
+
+        store = JsonStore("sail_rightofway/numberofquestions.json")
+
+        store.put("question_number", question_number=question_number)
+
+        boat_questions.start(number_questions = question_number)
+
 
 
 class QuizWindow(Screen):
@@ -72,23 +108,66 @@ class QuizWindow(Screen):
         self.manager.current = "setupwindow"
         self.manager.transition.direction="left"
 
-    def any_function():
+    def any_function(self, *args):
         pass
 
     def restart_quiz(self, *args):
-        pass
+
+        store = JsonStore("sail_rightofway/numberofquestions.json")
+
+        try:
+            store.get("question_number")
+            question_number = store.get("question_number")["question_number"]
+        except BaseException:
+            question_number = 10
+
+
+        boat_questions.start(number_questions = question_number)
+
+        self.show_png()
+
+        self.false_counter.text = str(0)
+        self.true_counter.text = str(0)
 
     def show_png(self, *args):
-        pass
+        output = boat_questions.show_question()
+        try:
+            if "Schema" not in output:
+                self.sail_png.source = f"sail_rightofway/assets/sails/{output}.png"
+            else:
+                self.sail_png.source = f"sail_rightofway/assets/schema/{output}.png"
+        except TypeError:
+            pass
+
 
     def ausweichen(self, *args):
-        pass
+        boat_questions.answer_question(answer = "ausweichpflichtig")
+        self.show_png()
+
+        self.false_counter.text = boat_questions.show_false_count()
+        self.true_counter.text = boat_questions.show_correct_count()
+
 
     def kurshalten(self, *args):
-        pass
+        boat_questions.answer_question(answer = "kurshaltepflichtig")
+        self.show_png()
+
+        self.false_counter.text = boat_questions.show_false_count()
+        self.true_counter.text = boat_questions.show_correct_count()
+
 
     def weiter(self, *args):
-        pass
+        boat_questions.continue_quiz()
+        self.show_png()
+
+        self.false_counter.text = boat_questions.show_false_count()
+        self.true_counter.text = boat_questions.show_correct_count()
+
+
+
+
+
+
 
 
 
