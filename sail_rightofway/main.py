@@ -80,8 +80,8 @@ class SetupWindow(Screen):
             elif (question_number <= 30) and (question_number >= 10):
                 question_number = question_number
 
-            elif question_number < 10:
-                question_number = 10
+            elif question_number < 4:
+                question_number = 4
 
         except BaseException:
             question_number = 10
