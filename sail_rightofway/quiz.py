@@ -115,7 +115,7 @@ class quiz_sailing():
 
                 elif len(self.sequenz) == 1:
                     self.counter_correct = self.counter_correct  + 1
-                    self.sequenz = []
+                    self.sequenz = ["Stb_start"]
                     self.pic_question = "Stb_start"
 
             elif answer != motiv_dict[self.pic_question]["answer"]:
@@ -135,8 +135,8 @@ class quiz_sailing():
                     self.sequenz = self.sequenz[1:]
                     self.pic_question = self.sequenz[0]
 
-                elif self.sequenz == 1:
-                    self.sequenz = []
+                else:
+                    self.sequenz = ["Stb_start"]
                     self.pic_question = "Stb_start"
 
             else:
@@ -144,9 +144,10 @@ class quiz_sailing():
                     self.sequenz = self.sequenz[1:]
                     self.pic_question = self.sequenz[0]
 
-                elif self.sequenz == 1:
-                    self.sequenz = []
+                else:
+                    self.sequenz = ["Stb_start"]
                     self.pic_question = "Stb_start"
+
         except BaseException:
             self.pic_question = "Stb_start"
 
