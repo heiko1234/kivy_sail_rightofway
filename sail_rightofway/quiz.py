@@ -63,6 +63,7 @@ class quiz_sailing():
         self.sequenz = None
         self.counter_correct = 0
         self.counter_false = 0
+        self.counter_jumper = 0
         self.pic_question = None
 
     def start(self, number_questions = 10):
@@ -93,6 +94,7 @@ class quiz_sailing():
         self.sequenz = selected_questions
         self.counter_correct = 0
         self.counter_false = 0
+        self.counter_jumper = 0
         self.pic_question = selected_questions[0]
 
     def show_question(self):
@@ -103,6 +105,9 @@ class quiz_sailing():
     
     def show_false_count(self):
         return str(self.counter_false)
+    
+    def show_jumper_count(self):
+        return str(self.counter_jumper)
 
     def answer_question(self, answer):
 
@@ -141,6 +146,7 @@ class quiz_sailing():
 
             else:
                 if len(self.sequenz) >1:
+                    self.counter_jumper = self.counter_jumper  + 1
                     self.sequenz = self.sequenz[1:]
                     self.pic_question = self.sequenz[0]
 

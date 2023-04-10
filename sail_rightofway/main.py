@@ -101,6 +101,7 @@ class QuizWindow(Screen):
     sail_png = ObjectProperty(None)
     false_counter = ObjectProperty(None)
     true_counter = ObjectProperty(None)
+    jumper_counter = ObjectProperty(None)
 
     def switch_to_setup_view(self, *args):
         self.manager.current = "setupwindow"
@@ -127,6 +128,7 @@ class QuizWindow(Screen):
 
         self.false_counter.text = str(0)
         self.true_counter.text = str(0)
+        self.jumper_counter.text = str(0)
 
     def show_png(self, *args):
         output = boat_questions.show_question()
@@ -145,7 +147,7 @@ class QuizWindow(Screen):
 
         self.false_counter.text = boat_questions.show_false_count()
         self.true_counter.text = boat_questions.show_correct_count()
-
+        self.jumper_counter.text = boat_questions.show_jumper_count()
 
     def kurshalten(self, *args):
         boat_questions.answer_question(answer = "kurshaltepflichtig")
@@ -153,7 +155,7 @@ class QuizWindow(Screen):
 
         self.false_counter.text = boat_questions.show_false_count()
         self.true_counter.text = boat_questions.show_correct_count()
-
+        self.jumper_counter.text = boat_questions.show_jumper_count()
 
     def weiter(self, *args):
         boat_questions.continue_quiz()
@@ -161,7 +163,7 @@ class QuizWindow(Screen):
 
         self.false_counter.text = boat_questions.show_false_count()
         self.true_counter.text = boat_questions.show_correct_count()
-
+        self.jumper_counter.text = boat_questions.show_jumper_count()
 
 
 
