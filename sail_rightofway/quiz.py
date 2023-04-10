@@ -64,9 +64,12 @@ class quiz_sailing():
         self.counter_correct = 0
         self.counter_false = 0
         self.counter_jumper = 0
+        self.number_questions = 10
         self.pic_question = None
 
     def start(self, number_questions = 10):
+
+        self.number_questions = number_questions
         # number_questions = 10
 
         selected_questions = []
@@ -151,6 +154,8 @@ class quiz_sailing():
                     self.pic_question = self.sequenz[0]
 
                 else:
+                    if self.counter_false + self.counter_correct + self.counter_jumper < self.number_questions:
+                        self.counter_jumper = self.counter_jumper  + 1
                     self.sequenz = ["Stb_start"]
                     self.pic_question = "Stb_start"
 

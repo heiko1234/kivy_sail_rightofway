@@ -136,10 +136,10 @@ MDScreenManager:
 
         GridLayout:
             cols: 2
-            size_hint: (0.99, 0.2)
+            size_hint: (0.99, 0.15)
 
             MDLabel:
-                size_hint: (1, 0.5)
+                size_hint: (1, 0.95)
                 text: "Antworten"
                 halign: "center"
 
@@ -149,29 +149,29 @@ MDScreenManager:
 
                 MDLabel:
                     id: true_counter
-                    size_hint: (1, 0.5)
+                    size_hint: (1, 0.95)
                     text:"0"
                     halign: "center"
                     theme_text_color: "Custom"
                     text_color: 0, 1, 0, 1
                 MDLabel:
-                    size_hint: (1, 0.5)
+                    size_hint: (1, 0.95)
                     text: "/"
                     halign: "center"
                 MDLabel:
                     id: false_counter
-                    size_hint: (1, 0.5)
+                    size_hint: (1, 0.95)
                     text:"0"
                     halign: "center"
                     theme_text_color: "Custom"
                     text_color: 1, 0, 0, 1
                 MDLabel:
-                    size_hint: (1, 0.5)
+                    size_hint: (1, 0.95)
                     text: "/"
                     halign: "center"
                 MDLabel:
                     id: jumper_counter
-                    size_hint: (1, 0.5)
+                    size_hint: (1, 0.95)
                     text:"0"
                     halign: "center"
                     theme_text_color: "Custom"
@@ -216,7 +216,7 @@ MDScreenManager:
                 text_color: "blue"
                 line_color: "blue"
                 halign: "center"
-                size_hint: (0.1, 0.1)
+                size_hint: (0.5, 0.9)
                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 on_release: 
                     root.ausweichen()
@@ -229,7 +229,7 @@ MDScreenManager:
                 text_color: "blue"
                 line_color: "blue"
                 halign: "center"
-                size_hint: (0.1, 0.1)
+                size_hint: (0.5, 0.9)
                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 on_release: 
                     root.kurshalten()
@@ -237,7 +237,7 @@ MDScreenManager:
 
         GridLayout:
             cols: 1
-            size_hint: (0.99, 0.1)
+            size_hint: (0.99, 0.05)
             # pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
             MDLabel:
@@ -258,12 +258,20 @@ MDScreenManager:
                 text_color: "blue"
                 line_color: "blue"
                 halign: "center"
-                size_hint: (0.1, 0.2)
+                size_hint: (0.9, 0.5)
                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 on_release: 
                     root.weiter()
                     # pass
 
+        GridLayout:
+            cols: 1
+            size_hint: (0.99, 0.15)
+            # pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
 
         MDBottomAppBar:
 
