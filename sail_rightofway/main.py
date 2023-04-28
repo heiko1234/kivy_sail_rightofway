@@ -12,7 +12,8 @@ from kivymd.app import MDApp
 
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
-from kivymd.toast.kivytoast.kivytoast import toast
+# from kivymd.toast.kivytoast.kivytoast import toast
+from kivymd.toast import toast
 
 # from sail_class import sail_infos, sail_scenario
 
@@ -140,10 +141,26 @@ class QuizWindow(Screen):
         except TypeError:
             pass
 
+    def show_toaster(self, *args):
+        output = boat_questions.show_true_false_answer()
+
+        if output is None:
+            pass
+
+        elif output:
+            toast(text="Antwort ist korrekt", duration=1.5)
+
+        else:
+            toast(text="Antwort ist falsch", duration=1.5)
+
+
+
 
     def ausweichen(self, *args):
         boat_questions.answer_question(answer = "ausweichpflichtig")
         self.show_png()
+
+        self.show_toaster()
 
         self.false_counter.text = boat_questions.show_false_count()
         self.true_counter.text = boat_questions.show_correct_count()
@@ -152,6 +169,8 @@ class QuizWindow(Screen):
     def kurshalten(self, *args):
         boat_questions.answer_question(answer = "kurshaltepflichtig")
         self.show_png()
+
+        self.show_toaster()
 
         self.false_counter.text = boat_questions.show_false_count()
         self.true_counter.text = boat_questions.show_correct_count()

@@ -66,6 +66,7 @@ class quiz_sailing():
         self.counter_jumper = 0
         self.number_questions = 10
         self.pic_question = None
+        self.true_false_answer = None
 
     def start(self, number_questions = 10):
 
@@ -99,6 +100,7 @@ class quiz_sailing():
         self.counter_false = 0
         self.counter_jumper = 0
         self.pic_question = selected_questions[0]
+        self.true_false_answer = None
 
     def show_question(self):
         return self.pic_question
@@ -111,11 +113,17 @@ class quiz_sailing():
     
     def show_jumper_count(self):
         return str(self.counter_jumper)
+    
+    def show_true_false_answer(self):
+        return self.true_false_answer
 
     def answer_question(self, answer):
 
         try:
             if answer == motiv_dict[self.pic_question]["answer"]:
+
+                self.true_false_answer = True
+
                 if len(self.sequenz) >1:
                     self.sequenz = self.sequenz[1:]
                     self.pic_question = self.sequenz[0]
@@ -127,6 +135,9 @@ class quiz_sailing():
                     self.pic_question = "Stb_start"
 
             elif answer != motiv_dict[self.pic_question]["answer"]:
+
+                self.true_false_answer = False
+
                 self.pic_question = motiv_dict[self.pic_question]["schema"]
                 self.counter_false = self.counter_false  + 1
 
