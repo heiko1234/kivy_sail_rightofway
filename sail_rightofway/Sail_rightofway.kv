@@ -26,6 +26,7 @@ MDScreenManager:
     WelcomeWindow:
     QuizWindow:
     SetupWindow:
+    LawWindow:
 
 
 <WelcomeWindow>:
@@ -51,6 +52,48 @@ MDScreenManager:
             pos_hint: {"center_x": 0.5, "center_y": 0.3}
             on_release: 
                 root.entrance_button_behavior()
+
+
+# https://stackoverflow.com/questions/66455785/scrollable-text-field-in-kivymd
+<LawWindow>:
+    name: "lawwindow"
+
+    GridLayout:
+        cols: 1
+        size_hint: 0.995, 0.995
+
+        GridLayout:
+            cols: 3
+            size_hint: 0.05, 0.1
+
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
+
+            MDRoundFlatIconButton:
+                text: "Zurück zum Spiel"
+                icon: "sail-boat"
+                theme_text_color: "Custom"
+                text_color: "blue"
+                line_color: "blue"
+                halign: "center"
+                size_hint: (0.1, 0.1)
+                pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                on_release: 
+                    root.entrance_button_behavior()
+
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
+
+        ScrollView:
+            id: scroll
+            CodeInput:
+                size_hint: 1, None
+                text: "KVR Regeln \n \n Regel 12 Segelfahrzeuge \n Wenn zwei Segelfahrzeuge \n sich einander so nähern, dass  \n die Möglichkeit der Gefahr  \n eines Zusammenstosses besteht,  \n muss das eine dem \n anderen wie folgt ausweichen: \n \n i) Wenn sie den Wind nicht \n von derselben seite haben,\n muss das Fahrzeug, das den \n Wind von der Backbord hat, \n dem anderen ausweichen.\n \n ii) wenn sie den Wind von \n derselben Seite haben, muss \n das luvwärtige Fahrzeug \n dem leewärtigen ausweichen. \n \n iii) wenn ein Fahrzeug mit \n Wind von Backbord ein \n Fahrzeug in Luv sichtet \n und nicht mit Sicherheit \n feststllen kann, ob das \n andere Fahrzeug den Wind \n von Backbord oder von \n Steuerbord hat, muss \n es dem anderen ausweichen. \n \n Im Sinne der Regel ist  \n die Luvseite diejenige  \n Seite, die dem ggesetzten  \n Grosssegel gegenüberliegt..."
+                height: max(self.minimum_height, scroll.height)
 
 
 <SetupWindow>:
@@ -132,7 +175,8 @@ MDScreenManager:
             # https://github.com/kivymd/KivyMD/blob/master/kivymd/icon_definitions.py
             left_action_items: [["ship-wheel", lambda x: left_nav_drawer.set_state("open"), "", ""]]
 
-            right_action_items: [["information-variant", lambda x: right_nav_drawer.set_state("open"), "", ""]]
+            right_action_items: [["scale-balance", lambda x: root.switch_to_lawview(x), "", ""], ["information-variant", lambda x: right_nav_drawer.set_state("open"), "", ""]]
+
 
         GridLayout:
             cols: 2

@@ -58,7 +58,17 @@ class WelcomeWindow(Screen):
         # boat_questions.start(number_questions = 10)
 
 
+class LawWindow(Screen):
 
+    def any_functin(self, *args):
+        pass
+
+    def entrance_button_behavior(self, *args):
+        Clock.schedule_once(self.switch_to_second_view, 1)
+
+    def switch_to_second_view(self, *args):
+        self.manager.current = "quizwindow"
+        self.manager.transition.direction="left"
 
 
 class SetupWindow(Screen):
@@ -110,6 +120,10 @@ class QuizWindow(Screen):
 
     def any_function(self, *args):
         pass
+
+    def switch_to_lawview(self, *args):
+        self.manager.current = "lawwindow"
+        self.manager.transition.direction="right"
 
     def restart_quiz(self, *args):
 
