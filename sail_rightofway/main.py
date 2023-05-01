@@ -32,13 +32,17 @@ from functools import partial
 
 from kivy.storage.jsonstore import JsonStore
 
-
+# Open a weblink
+import webbrowser
 
 # init the boat outside of Screen
 from quiz import quiz_sailing
 
 boat_questions = quiz_sailing()
 
+
+
+from kivymd.uix.label import MDLabel
 
 
 # Define our differeent screens
