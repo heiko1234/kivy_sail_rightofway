@@ -28,6 +28,7 @@ MDScreenManager:
     QuizWindow:
     SetupWindow:
     LawWindow:
+    Haftungindow:
 
 
 <WelcomeWindow>:
@@ -107,6 +108,50 @@ MDScreenManager:
                 text_size: self.width, None
                 text: "KVR Regeln \n \n Regel 12 Segelfahrzeuge \n Wenn zwei Segelfahrzeuge \n sich einander so nähern, dass  \n die Möglichkeit der Gefahr  \n eines Zusammenstosses besteht,  \n muss das eine dem \n anderen wie folgt ausweichen: \n \n i) Wenn sie den Wind nicht \n von derselben seite haben,\n muss das Fahrzeug, das den \n Wind von der Backbord hat, \n dem anderen ausweichen.\n \n ii) wenn sie den Wind von \n derselben Seite haben, muss \n das luvwärtige Fahrzeug \n dem leewärtigen ausweichen. \n \n iii) wenn ein Fahrzeug mit \n Wind von Backbord ein \n Fahrzeug in Luv sichtet \n und nicht mit Sicherheit \n feststllen kann, ob das \n andere Fahrzeug den Wind \n von Backbord oder von \n Steuerbord hat, muss \n es dem anderen ausweichen. \n \n Im Sinne der Regel ist  \n die Luvseite diejenige  \n Seite, die dem ggesetzten  \n Grosssegel gegenüberliegt..."
 
+
+<Haftungindow>:
+    name: "haftungwindow"
+
+    GridLayout:
+        cols: 1
+        size_hint: 0.995, 0.995
+
+        GridLayout:
+            cols: 3
+            size_hint: 0.05, 0.1
+
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
+
+            MDRoundFlatIconButton:
+                text: "Zurück zum Spiel"
+                icon: "sail-boat"
+                theme_text_color: "Custom"
+                text_color: "blue"
+                line_color: "blue"
+                halign: "center"
+                size_hint: (0.1, 0.1)
+                pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                on_release: 
+                    root.entrance_button_behavior()
+
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
+
+
+
+        MDScrollView:
+
+            MDLabel:
+                text_color: "black"
+                size_hint: 1, None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                text: "Haftungsausschuss \n \n Es kann keinerlei Haftung für Aktualität, Richtigkeit und Vollständigkeit der bereitgestellten Informationen in dieser App übernehmen werden. Im Zweifel sollten Nutzer der App immer die offiziellen Verlautbarungen (KVR und lokale Regelungen) der einschlägigen Behörden auf Bundes-, Landes- und kommunaler Ebene konsultieren und ihr Verhalten ausschließlich nach diesen ausrichten. \n \n Haftungsansprüche, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen."
 
 
 
@@ -190,9 +235,11 @@ MDScreenManager:
             # https://github.com/kivymd/KivyMD/blob/master/kivymd/icon_definitions.py
             left_action_items: [["ship-wheel", lambda x: left_nav_drawer.set_state("open"), "", ""], ["gavel", lambda x: root.switch_to_lawview(x), "", ""]]
 
-            # scale-balance    gavel
+            # scale-balance , gavel
 
-            right_action_items: [["information-variant", lambda x: right_nav_drawer.set_state("open"), "", ""]]
+            # TODO: switch and open rechtliches app, haftungsausschuss
+
+            right_action_items: [["scale-balance", lambda x: root.switch_to_lawview(x), "", ""], ["information-variant", lambda x: right_nav_drawer.set_state("open"), "", ""]]
 
 
         GridLayout:
