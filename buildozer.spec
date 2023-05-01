@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = Sail Right of way
+title = Right of way
 
 # (str) Package name
 package.name = sail_rightofway
