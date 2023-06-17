@@ -151,7 +151,7 @@ MDScreenManager:
                 size_hint: 1, None
                 height: self.texture_size[1]
                 text_size: self.width, None
-                text: "Haftungsausschuss \n \n Es kann keinerlei Haftung für Aktualität, Richtigkeit und Vollständigkeit der bereitgestellten Informationen in dieser App übernohmen werden. Im Zweifel sollten Nutzer der App immer die offiziellen Verlautbarungen (z.B. KVR und lokale Regelungen) der einschlägigen Behörden auf Bundes-, Landes- und regionaler Ebene konsultieren und ihr Verhalten ausschließlich nach diesen ausrichten. Lokal spezifische Regelungen greifen vor den allgemeinen Regelungen.  \n \n Haftungsansprüche, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen."
+                text: "Haftungsausschuss \n \n Es kann keinerlei Haftung für Aktualität, Richtigkeit und Vollständigkeit der bereitgestellten Informationen in dieser App übernohmen werden. Im Zweifel sollten Nutzer der App immer die offiziellen Verlautbarungen (z.B. KVR und lokale Regelungen) der einschlägigen Behörden auf Bundes-, Landes- und regionaler Ebene konsultieren und ihr Verhalten ausschließlich nach diesen ausrichten. Lokal spezifische Regelungen greifen vor den allgemeinen Regelungen.  \n \n Haftungsansprüche, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen. \n \n Der App Betreiber behält es sich ausdrücklich vor, Teile der App ohne gesonderte Ankündigung zu verändern, zu ergänzen oder zu löschen. "
 
 
 
@@ -223,6 +223,7 @@ MDScreenManager:
     false_counter: false_counter
     true_counter: true_counter
     jumper_counter: jumper_counter
+    wind_png: wind_png
 
     GridLayout:
         cols: 1
@@ -239,7 +240,7 @@ MDScreenManager:
 
             # TODO: switch and open rechtliches app, haftungsausschuss
 
-            right_action_items: [["scale-balance", lambda x: root.switch_to_lawview(x), "", ""], ["information-variant", lambda x: right_nav_drawer.set_state("open"), "", ""]]
+            right_action_items: [["scale-balance", lambda x: root.switch_to_haftungsview(x), "", ""], ["information-variant", lambda x: right_nav_drawer.set_state("open"), "", ""]]
 
 
         GridLayout:
@@ -298,8 +299,26 @@ MDScreenManager:
                 #keep_ratio: True
                 # allow_stretch: True
                 source: "assets/sails/Stb_start.png"
-                # size_hint: 
+                # size_hint:
                 size: 360, 360
+
+        GridLayout:
+            cols: 1
+            size_hint: (0.3, 0.1)
+
+            MDLabel:
+                text: "Windrichtung"
+                size_hint: (1, 0.5)
+                halign: "center"
+                text_color: "black"
+
+        GridLayout:
+            cols: 1
+            size_hint: (0.5, 0.2)
+
+            Image:
+                id: wind_png
+                source: "assets/wind/wind_00.png"
 
         GridLayout:
             cols: 1
@@ -374,7 +393,7 @@ MDScreenManager:
 
         GridLayout:
             cols: 1
-            size_hint: (0.99, 0.15)
+            size_hint: (0.99, 0.1)
             # pos_hint: {"center_x": 0.5, "center_y": 0.5}
             MDLabel:
                 text:""

@@ -130,6 +130,7 @@ class QuizWindow(Screen):
     false_counter = ObjectProperty(None)
     true_counter = ObjectProperty(None)
     jumper_counter = ObjectProperty(None)
+    wind_png = ObjectProperty(None)
 
     def switch_to_setup_view(self, *args):
         self.manager.current = "setupwindow"
@@ -142,7 +143,7 @@ class QuizWindow(Screen):
         self.manager.current = "lawwindow"
         self.manager.transition.direction="left"
 
-    def switch_to_lawview(self, *args):
+    def switch_to_haftungsview(self, *args):
         self.manager.current = "haftungwindow"
         self.manager.transition.direction="right"
 
@@ -161,6 +162,7 @@ class QuizWindow(Screen):
         boat_questions.start(number_questions = question_number)
 
         self.show_png()
+        self.show_wind_png()
 
         self.false_counter.text = str(0)
         self.true_counter.text = str(0)
@@ -173,6 +175,13 @@ class QuizWindow(Screen):
                 self.sail_png.source = f"assets/sails/{output}.png"
             else:
                 self.sail_png.source = f"assets/schema/{output}.png"
+        except TypeError:
+            pass
+
+    def show_wind_png(self, *args):
+        output = boat_questions.show_wind()
+        try:
+            self.wind_png.source = f"assets/wind/{output}.png"
         except TypeError:
             pass
 
@@ -195,6 +204,8 @@ class QuizWindow(Screen):
         boat_questions.answer_question(answer = "ausweichpflichtig")
         self.show_png()
 
+        self.show_wind_png()
+
         self.show_toaster()
 
         self.false_counter.text = boat_questions.show_false_count()
@@ -205,6 +216,8 @@ class QuizWindow(Screen):
         boat_questions.answer_question(answer = "kurshaltepflichtig")
         self.show_png()
 
+        self.show_wind_png()
+
         self.show_toaster()
 
         self.false_counter.text = boat_questions.show_false_count()
@@ -214,6 +227,8 @@ class QuizWindow(Screen):
     def weiter(self, *args):
         boat_questions.continue_quiz()
         self.show_png()
+
+        self.show_wind_png()
 
         self.false_counter.text = boat_questions.show_false_count()
         self.true_counter.text = boat_questions.show_correct_count()

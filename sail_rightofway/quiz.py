@@ -9,46 +9,56 @@ motiv_dict={
     # Bb_Bb
     "Bb_Bb1": {
         "answer": "kurshaltepflichtig",
-        "schema": "Bb_Bb_Schema"
+        "schema": "Bb_Bb_Schema",
+        "wind": "wind_315"
     },
     "Bb_Bb2": {
         "answer": "kurshaltepflichtig",
-        "schema": "Bb_Bb_Schema"
+        "schema": "Bb_Bb_Schema",
+        "wind": "wind_315"
     },
     # Bb_Stb
     "Bb_Stb1": {
         "answer": "ausweichpflichtig",
-        "schema": "Bb_Stb_Schema"
+        "schema": "Bb_Stb_Schema",
+        "wind": "wind_270"
     },
     "Bb_Stb2": {
         "answer": "ausweichpflichtig",
-        "schema": "Bb_Stb_Schema2"
+        "schema": "Bb_Stb_Schema2",
+        "wind": "wind_225"
     },
     "Bb_Stb3": {
         "answer": "ausweichpflichtig",
-        "schema": "Bb_Stb_Schema3"
+        "schema": "Bb_Stb_Schema3",
+        "wind": "wind_315"
     },
     # Stb_Bb
     "Stb_Bb1": {
         "answer": "kurshaltepflichtig",
-        "schema": "Stb_Bb_Schema"
+        "schema": "Stb_Bb_Schema",
+        "wind": "wind_90"
     },
     "Stb_Bb2": {
         "answer": "kurshaltepflichtig",
-        "schema": "Stb_Bb_Schema2"
+        "schema": "Stb_Bb_Schema2",
+        "wind": "wind_135"
     },
     "Stb_Bb3": {
         "answer": "kurshaltepflichtig",
-        "schema": "Stb_Bb_Schema3"
+        "schema": "Stb_Bb_Schema3",
+        "wind": "wind_45"
     },
     # Stb_Stb
     "Stb_Stb1": {
         "answer": "kurshaltepflichtig",
-        "schema": "Stb_Stb_Schema"
+        "schema": "Stb_Stb_Schema",
+        "wind": "wind_45"
     },
     "Stb_Stb2": {
         "answer": "ausweichpflichtig",
-        "schema": "Bb_Bb_Schema"
+        "schema": "Bb_Bb_Schema",
+        "wind": "wind_315"
     },
 }
 
@@ -67,6 +77,7 @@ class quiz_sailing():
         self.number_questions = 10
         self.pic_question = None
         self.true_false_answer = None
+        self.wind = "wind_00"
 
     def start(self, number_questions = 10):
 
@@ -85,9 +96,9 @@ class quiz_sailing():
 
                 if element_add not in selected_questions:
                     selected_questions.append(element_add)
-        
+
         elif number_questions > len(self.questionlist):
-            
+
             while len(selected_questions) < number_questions:
 
                 element_add = random.choice(self.questionlist)
@@ -101,21 +112,25 @@ class quiz_sailing():
         self.counter_jumper = 0
         self.pic_question = selected_questions[0]
         self.true_false_answer = None
+        self.wind = motiv_dict[self.pic_question]["wind"]
 
     def show_question(self):
         return self.pic_question
 
     def show_correct_count(self):
         return str(self.counter_correct)
-    
+
     def show_false_count(self):
         return str(self.counter_false)
-    
+
     def show_jumper_count(self):
         return str(self.counter_jumper)
-    
+
     def show_true_false_answer(self):
         return self.true_false_answer
+
+    def show_wind(self):
+        return str(self.wind)
 
     def answer_question(self, answer):
 
@@ -128,11 +143,13 @@ class quiz_sailing():
                     self.sequenz = self.sequenz[1:]
                     self.pic_question = self.sequenz[0]
                     self.counter_correct = self.counter_correct  + 1
+                    self.wind = motiv_dict[self.pic_question]["wind"]
 
                 elif len(self.sequenz) == 1:
                     self.counter_correct = self.counter_correct  + 1
                     self.sequenz = ["Stb_start"]
                     self.pic_question = "Stb_start"
+                    self.wind = "wind_00"
 
             elif answer != motiv_dict[self.pic_question]["answer"]:
 
@@ -140,8 +157,9 @@ class quiz_sailing():
 
                 self.pic_question = motiv_dict[self.pic_question]["schema"]
                 self.counter_false = self.counter_false  + 1
+                # self.wind = motiv_dict[self.pic_question]["wind"]
 
-            return self.pic_question 
+            return self.pic_question
 
         except BaseException:
             return self.continue_quiz()
@@ -153,28 +171,33 @@ class quiz_sailing():
                 if len(self.sequenz) >1:
                     self.sequenz = self.sequenz[1:]
                     self.pic_question = self.sequenz[0]
+                    self.wind = motiv_dict[self.pic_question]["wind"]
 
                 else:
                     self.sequenz = ["Stb_start"]
                     self.pic_question = "Stb_start"
+                    self.wind = "wind_00"
 
             else:
                 if len(self.sequenz) >1:
                     self.counter_jumper = self.counter_jumper  + 1
                     self.sequenz = self.sequenz[1:]
                     self.pic_question = self.sequenz[0]
+                    self.wind = motiv_dict[self.pic_question]["wind"]
 
                 else:
                     if self.counter_false + self.counter_correct + self.counter_jumper < self.number_questions:
                         self.counter_jumper = self.counter_jumper  + 1
                     self.sequenz = ["Stb_start"]
                     self.pic_question = "Stb_start"
+                    self.wind = "wind_00"
 
         except BaseException:
             self.pic_question = "Stb_start"
+            self.wind = "wind_00"
 
         return self.pic_question
 
 
-# kurshaltepflichtig    
+# kurshaltepflichtig
 # ausweichpflichtig
