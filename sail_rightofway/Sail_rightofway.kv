@@ -159,6 +159,7 @@ MDScreenManager:
     name: "setupwindow"
 
     number_of_questions: number_of_questions
+    questionmode: questionmode
 
     GridLayout:
         cols: 1
@@ -188,6 +189,54 @@ MDScreenManager:
                     hint_text: "Nummer eintragen"
                     helper_text: "Fragenanzahl: 4 - 30"
                     helper_text_mode: "on_focus"
+
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
+
+
+            # TODO: finalize this behavior
+            MDLabel:
+                size_hint: (1, 0.2)
+                text: "FrageModus" #" Situationsbild oder Situationsskizze"
+                halign: "center"
+
+
+            GridLayout:
+                cols: 5
+                size_hint: 0.4, 0.5
+
+                MDLabel:
+                    text:""
+                    halign: "center"
+                    text_color: "black"
+
+                MyToggleButton:
+                    id: questionmode
+                    size_hint: (0.5, 1)
+                    text: "Situationsbild"
+                    group: "questionmodus"
+                    state: "down"
+                    on_release:
+                        root.questionmodus()
+
+
+                MDLabel:
+                    text:""
+                    halign: "center"
+                    text_color: "black"
+
+                MyToggleButton:
+                    size_hint: (0.5, 1)
+                    text: "Situationsskizze"
+                    group: "questionmodus"
+                    state: "normal"
+
+                MDLabel:
+                    text:""
+                    halign: "center"
+                    text_color: "black"
 
             MDLabel:
                 text:""

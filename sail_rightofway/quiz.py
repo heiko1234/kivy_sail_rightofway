@@ -5,57 +5,70 @@ import time
 # kurshaltepflichtig    
 # ausweichpflichtig
 
+
+# TODO: umbau auf "key" with "question"
+
 motiv_dict={
     # Bb_Bb
     "Bb_Bb1": {
+        "question": "Bb_Bb1",
         "answer": "kurshaltepflichtig",
         "schema": "Bb_Bb_Schema",
         "wind": "wind_315"
     },
     "Bb_Bb2": {
+        "question": "Bb_Bb2",
         "answer": "kurshaltepflichtig",
         "schema": "Bb_Bb_Schema",
         "wind": "wind_315"
     },
     # Bb_Stb
     "Bb_Stb1": {
+        "question": "Bb_Stb1",
         "answer": "ausweichpflichtig",
         "schema": "Bb_Stb_Schema",
         "wind": "wind_270"
     },
     "Bb_Stb2": {
+        "question": "Bb_Stb2",
         "answer": "ausweichpflichtig",
         "schema": "Bb_Stb_Schema2",
         "wind": "wind_225"
     },
     "Bb_Stb3": {
+        "question": "Bb_Stb3",
         "answer": "ausweichpflichtig",
         "schema": "Bb_Stb_Schema3",
         "wind": "wind_315"
     },
     # Stb_Bb
     "Stb_Bb1": {
+        "question": "Stb_Bb1",
         "answer": "kurshaltepflichtig",
         "schema": "Stb_Bb_Schema",
         "wind": "wind_90"
     },
     "Stb_Bb2": {
+        "question": "Stb_Bb2",
         "answer": "kurshaltepflichtig",
         "schema": "Stb_Bb_Schema2",
         "wind": "wind_135"
     },
     "Stb_Bb3": {
+        "question": "Stb_Bb3",
         "answer": "kurshaltepflichtig",
         "schema": "Stb_Bb_Schema3",
         "wind": "wind_45"
     },
     # Stb_Stb
     "Stb_Stb1": {
+        "question": "Stb_Stb1",
         "answer": "kurshaltepflichtig",
         "schema": "Stb_Stb_Schema",
         "wind": "wind_45"
     },
     "Stb_Stb2": {
+        "question": "Stb_Stb2",
         "answer": "ausweichpflichtig",
         "schema": "Bb_Bb_Schema",
         "wind": "wind_315"
@@ -115,7 +128,10 @@ class quiz_sailing():
         self.wind = motiv_dict[self.pic_question]["wind"]
 
     def show_question(self):
-        return self.pic_question
+        if not "Schema" in self.pic_question:
+            return motiv_dict[self.pic_question]["question"]
+        else:
+            return self.pic_question
 
     def show_correct_count(self):
         return str(self.counter_correct)
@@ -141,7 +157,8 @@ class quiz_sailing():
 
                 if len(self.sequenz) >1:
                     self.sequenz = self.sequenz[1:]
-                    self.pic_question = self.sequenz[0]
+                    # self.pic_question = self.sequenz[0]
+                    self.pic_question = self.sequenz[0]["question"]
                     self.counter_correct = self.counter_correct  + 1
                     self.wind = motiv_dict[self.pic_question]["wind"]
 
@@ -183,6 +200,7 @@ class quiz_sailing():
                     self.counter_jumper = self.counter_jumper  + 1
                     self.sequenz = self.sequenz[1:]
                     self.pic_question = self.sequenz[0]
+                    # self.pic_question = self.sequenz[0]["question"]
                     self.wind = motiv_dict[self.pic_question]["wind"]
 
                 else:

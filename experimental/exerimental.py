@@ -2,6 +2,8 @@
 
 from backup_kivy.quiz import (quiz_sailing)
 
+from sail_rightofway.quiz import (quiz_sailing)
+
 
 # kurshaltepflichtig    
 # ausweichpflichtig
@@ -34,4 +36,5 @@ my_quiz.show_correct_count()
 "Schema" in my_quiz.show_question()
 
 my_quiz.sequenz
+my_quiz.questionlist
 

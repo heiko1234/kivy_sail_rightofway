@@ -43,6 +43,16 @@ boat_questions = quiz_sailing()
 
 
 from kivymd.uix.label import MDLabel
+# from kivy.uix.togglebutton import ToggleButton
+
+from kivymd.uix.behaviors.toggle_behavior import MDToggleButton
+from kivymd.uix.button import MDFlatButton
+
+
+class MyToggleButton(MDFlatButton, MDToggleButton):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.background_down = "lightgreen"
 
 
 # Define our differeent screens
@@ -91,6 +101,7 @@ class Haftungindow(Screen):
 class SetupWindow(Screen):
 
     number_of_questions = ObjectProperty()
+    questionmode = ObjectProperty()
 
     def any_function(self, *args):
         pass
@@ -98,6 +109,14 @@ class SetupWindow(Screen):
     def switch_to_second_view(self, *args):
         self.manager.current = "quizwindow"
         self.manager.transition.direction="right"
+
+
+    # TODO: make this funktion work with the modus. need to create on quiz
+    def questionmodus(self, *args, **kwargs):
+        print(f"args question: {args}")
+        print(f"kargs question: {kwargs}")
+        print(f"questionmode: {self.questionmode.state}")
+
 
     def restart_quiz(self, *args):
 
