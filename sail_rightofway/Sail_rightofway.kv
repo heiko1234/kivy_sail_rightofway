@@ -160,6 +160,7 @@ MDScreenManager:
 
     number_of_questions: number_of_questions
     questionmode: questionmode
+    questionmode_alternative: questionmode_alternative
 
     GridLayout:
         cols: 1
@@ -217,7 +218,7 @@ MDScreenManager:
                     size_hint: (0.5, 1)
                     text: "Situationsbild"
                     group: "questionmodus"
-                    state: "down"
+                    # state: "down"
                     on_release:
                         root.questionmodus()
 
@@ -228,10 +229,13 @@ MDScreenManager:
                     text_color: "black"
 
                 MyToggleButton:
+                    id: questionmode_alternative
                     size_hint: (0.5, 1)
                     text: "Situationsskizze"
                     group: "questionmodus"
-                    state: "normal"
+                    # state: "normal"
+                    on_release:
+                        root.questionmodus()
 
                 MDLabel:
                     text:""
@@ -518,7 +522,7 @@ MDScreenManager:
 
             MDNavigationDrawerItem:
                 icon: "information-outline"
-                text: "H2 solutions"
+                text: "Kulinna Solutions"
 
             MDNavigationDrawerDivider:
 
@@ -549,7 +553,7 @@ MDScreenManager:
 
             MDNavigationDrawerItem:
                 icon: "email-edit-outline"
-                text: "h2solutions@gmx.de"
+                text: "kulinnasolutions@gmx.de"
 
             MDNavigationDrawerItem:
                 icon: "phone"

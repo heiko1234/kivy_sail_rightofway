@@ -102,9 +102,23 @@ class SetupWindow(Screen):
 
     number_of_questions = ObjectProperty()
     questionmode = ObjectProperty()
+    questionmode_alternative = ObjectProperty()
 
     def any_function(self, *args):
         pass
+
+    def on_enter(self, *args):
+
+        store = JsonStore("numberofquestions.json")
+        questionmodus = store.get("questionmode")["questionmode"]
+
+        if questionmodus == "situation":
+            self.questionmode.state = "down"
+        elif questionmodus == "schema":
+            self.questionmode_alternative.state = "down"
+        else:
+            self.questionmode.state = "down"
+
 
     def switch_to_second_view(self, *args):
         self.manager.current = "quizwindow"
@@ -113,9 +127,19 @@ class SetupWindow(Screen):
 
     # TODO: make this funktion work with the modus. need to create on quiz
     def questionmodus(self, *args, **kwargs):
-        print(f"args question: {args}")
-        print(f"kargs question: {kwargs}")
-        print(f"questionmode: {self.questionmode.state}")
+        # print(f"args question: {args}")
+        # print(f"kargs question: {kwargs}")
+
+        store = JsonStore("numberofquestions.json")
+
+        # print(f"questionmode: {self.questionmode.state}")
+
+        if self.questionmode.state == "down":
+            questionmode = "situation"
+        else:
+            questionmode = "schema"
+
+        store.put("questionmode", questionmode=questionmode)
 
 
     def restart_quiz(self, *args):
@@ -138,7 +162,11 @@ class SetupWindow(Screen):
 
         store.put("question_number", question_number=question_number)
 
-        boat_questions.start(number_questions = question_number)
+        question_mode = store.get("questionmode")["questionmode"]
+        print(f"question_mode: {question_mode}")
+
+
+        boat_questions.start(number_questions = question_number, questionmodus=question_mode)
 
 
 
@@ -172,13 +200,21 @@ class QuizWindow(Screen):
         store = JsonStore("numberofquestions.json")
 
         try:
-            store.get("question_number")
+            # store.get("question_number")
             question_number = store.get("question_number")["question_number"]
         except BaseException:
             question_number = 10
 
+        try:
+            question_mode = store.get("questionmode")["questionmode"]
 
-        boat_questions.start(number_questions = question_number)
+        except BaseException:
+            question_mode = "situation"
+
+        print(f"question_mode: {question_mode}")
+
+
+        boat_questions.start(number_questions = question_number, questionmodus=question_mode)
 
         self.show_png()
         self.show_wind_png()
@@ -189,8 +225,18 @@ class QuizWindow(Screen):
 
     def show_png(self, *args):
         output = boat_questions.show_question()
+        questionmodus = boat_questions.show_questionmodus()
+
+        # if questionmodus == "schema"
+        # if questionmodus == "sitution"
+        print(f"show_png: {output}")
         try:
-            if "Schema" not in output:
+            if ("Schema" not in output) and (questionmodus=="situation"):
+                self.sail_png.source = f"assets/sails/{output}.png"
+            elif ("Schema" not in output) and (questionmodus=="schema"):
+                self.sail_png.source = f"assets/question_schema/{output}.png"
+                # self.sail_png.source = f"assets/sails/{output}.png"
+            elif "Stb_start" == output:
                 self.sail_png.source = f"assets/sails/{output}.png"
             else:
                 self.sail_png.source = f"assets/schema/{output}.png"
