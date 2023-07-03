@@ -143,6 +143,7 @@ class quiz_sailing():
         return str(self.questionmodus)
 
     def show_question(self):
+        # TODO: hier ist irgentwo der fehler, aber nur bei schema
         # if self.questionmodus == "schema"
         # if self.questionmodus == "situation"
         if "Stb_start" in self.pic_question:
@@ -150,9 +151,17 @@ class quiz_sailing():
         elif (not "Schema" in self.pic_question) and (self.questionmodus == "situation"):
             return motiv_dict[self.pic_question]["question_situation"]
         elif (not "Schema" in self.pic_question) and (self.questionmodus == "schema"):
+            print(f"show question pic_question: {self.pic_question}")
             return motiv_dict[self.pic_question]["question_schema"]
-        else:
+        elif ("Schema" in self.pic_question) and (self.questionmodus == "situation"):
+            # print(str(self.pic_question))
             return self.pic_question
+        elif ("Schema" in self.pic_question) and (self.questionmodus == "schema"):
+            # print(str(self.pic_question))
+            return self.pic_question
+        else:
+            print("some other problems")
+            # return self.pic_question
 
     def show_answer(self):
         try:
@@ -180,7 +189,7 @@ class quiz_sailing():
         # if self.questionmodus == "situation"
 
         try:
-            if answer == motiv_dict[self.pic_question]["answer"]:
+            if answer == motiv_dict[self.sequenz[0]]["answer"]:
 
                 print("answer is correct")
 
@@ -190,7 +199,7 @@ class quiz_sailing():
                     self.sequenz = self.sequenz[1:]
                     self.counter_correct = self.counter_correct  + 1
                     self.wind = motiv_dict[self.pic_question]["wind"]
-                    print(f"sequenz: {self.sequenz}")
+                    # print(f"sequenz: {self.sequenz}")
                     # self.pic_question = self.sequenz[0]
                     if self.questionmodus == "situation":
                         self.pic_question = motiv_dict[self.sequenz[0]]["question_situation"]
@@ -211,9 +220,10 @@ class quiz_sailing():
 
                 self.true_false_answer = False
 
-                self.pic_question = motiv_dict[self.pic_question]["schema"]
+                # print(f"wrong anser quiz: {motiv_dict[self.sequenz[0]]['schema']}")
+
+                self.pic_question = motiv_dict[self.sequenz[0]]["schema"]
                 self.counter_false = self.counter_false  + 1
-                # self.wind = motiv_dict[self.pic_question]["wind"]
 
             return self.pic_question
 
@@ -229,8 +239,11 @@ class quiz_sailing():
             if "Schema" in self.pic_question:
                 if len(self.sequenz) >1:
                     self.sequenz = self.sequenz[1:]
-                    self.pic_question = self.sequenz[0]
-                    self.wind = motiv_dict[self.pic_question]["wind"]
+                    if self.questionmodus == "situation":
+                        self.pic_question = motiv_dict[self.sequenz[0]]["question_situation"]
+                    elif self.questionmodus == "schema":
+                        self.pic_question = motiv_dict[self.sequenz[0]]["question_schema"]
+                    self.wind = motiv_dict[self.sequenz[0]]["wind"]
 
                 else:
                     self.sequenz = ["Stb_start"]
@@ -241,9 +254,12 @@ class quiz_sailing():
                 if len(self.sequenz) >1:
                     self.counter_jumper = self.counter_jumper  + 1
                     self.sequenz = self.sequenz[1:]
-                    self.pic_question = self.sequenz[0]
+                    if self.questionmodus == "situation":
+                        self.pic_question = motiv_dict[self.sequenz[0]]["question_situation"]
+                    elif self.questionmodus == "schema":
+                        self.pic_question = motiv_dict[self.sequenz[0]]["question_schema"]
                     # self.pic_question = self.sequenz[0]["question"]
-                    self.wind = motiv_dict[self.pic_question]["wind"]
+                    self.wind = motiv_dict[self.sequenz[0]]["wind"]
 
                 else:
                     if self.counter_false + self.counter_correct + self.counter_jumper < self.number_questions:

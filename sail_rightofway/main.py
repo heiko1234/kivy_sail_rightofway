@@ -229,15 +229,16 @@ class QuizWindow(Screen):
 
         # if questionmodus == "schema"
         # if questionmodus == "sitution"
-        print(f"show_png: {output}")
+        print(f"show_png main: {output}")
         try:
             if ("Schema" not in output) and (questionmodus=="situation"):
                 self.sail_png.source = f"assets/sails/{output}.png"
             elif ("Schema" not in output) and (questionmodus=="schema"):
                 self.sail_png.source = f"assets/question_schema/{output}.png"
-                # self.sail_png.source = f"assets/sails/{output}.png"
             elif "Stb_start" == output:
                 self.sail_png.source = f"assets/sails/{output}.png"
+            elif "Schema" in output:
+                self.sail_png.source = f"assets/schema/{output}.png"
             else:
                 self.sail_png.source = f"assets/schema/{output}.png"
         except TypeError:

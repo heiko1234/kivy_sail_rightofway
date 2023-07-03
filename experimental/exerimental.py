@@ -4,6 +4,8 @@ from backup_kivy.quiz import (quiz_sailing)
 
 from sail_rightofway.quiz import (quiz_sailing)
 
+from sail_rightofway.quiz import (motiv_dict)
+
 
 # kurshaltepflichtig
 # ausweichpflichtig
@@ -14,7 +16,24 @@ my_quiz = quiz_sailing()
 my_quiz.start()
 my_quiz.start(number_questions=10)
 my_quiz.start(number_questions=5, questionmodus="situation")
+
+# TODO: hier weiter testen und dran arbeiten
 my_quiz.start(number_questions=10, questionmodus="schema")
+
+my_quiz.sequenz
+# ['Bb_Bb1', 'Bb_Bb2', 'Stb_Stb2', 'Bb_Stb1', 'Bb_Stb3', 'Stb_Stb1', 'Stb_Bb3', 'Bb_Stb2', 'Stb_Bb2', 'Stb_Bb1']
+motiv_dict[my_quiz.sequenz[0]]["question_schema"]
+motiv_dict[my_quiz.sequenz[0]]["answer"]
+
+my_quiz.pic_question
+motiv_dict[my_quiz.pic_question]
+
+list(motiv_dict[my_quiz.pic_question].keys())
+# ['question_situation', 'question_schema', 'answer', 'schema', 'wind']
+
+
+my_quiz.pic_question == motiv_dict[my_quiz.sequenz[0]]["question_schema"]
+
 
 my_quiz.show_question()
 my_quiz.show_answer()
