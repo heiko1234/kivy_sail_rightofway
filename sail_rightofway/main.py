@@ -45,14 +45,16 @@ boat_questions = quiz_sailing()
 from kivymd.uix.label import MDLabel
 # from kivy.uix.togglebutton import ToggleButton
 
-from kivymd.uix.behaviors.toggle_behavior import MDToggleButton
-from kivymd.uix.button import MDFlatButton
 
 
-class MyToggleButton(MDFlatButton, MDToggleButton):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.background_down = "lightgreen"
+# from kivymd.uix.behaviors.toggle_behavior import MDToggleButton
+# from kivymd.uix.button import MDFlatButton
+
+
+# class MyToggleButton(MDFlatButton, MDToggleButton):
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.background_down = "lightgreen"
 
 
 # Define our differeent screens
@@ -101,8 +103,10 @@ class Haftungindow(Screen):
 class SetupWindow(Screen):
 
     number_of_questions = ObjectProperty()
-    questionmode = ObjectProperty()
-    questionmode_alternative = ObjectProperty()
+    # TODO
+    # questionmode = ObjectProperty()
+    # questionmode_alternative = ObjectProperty()
+    # questionmode_text = ObjectProperty()
 
     def any_function(self, *args):
         pass
@@ -112,12 +116,21 @@ class SetupWindow(Screen):
         store = JsonStore("numberofquestions.json")
         questionmodus = store.get("questionmode")["questionmode"]
 
+        # TODO
+        # if questionmodus == "situation":
+        #     self.questionmode.state = "down"
+        # elif questionmodus == "schema":
+        #     self.questionmode_alternative.state = "down"
+        # else:
+        #     self.questionmode.state = "down"
+
         if questionmodus == "situation":
-            self.questionmode.state = "down"
+            # self.questionmode_text.text = "situativ"
+            pass
         elif questionmodus == "schema":
-            self.questionmode_alternative.state = "down"
-        else:
-            self.questionmode.state = "down"
+            # self.questionmode_text.text = "schematisch"
+            pass
+
 
 
     def switch_to_second_view(self, *args):
@@ -134,12 +147,38 @@ class SetupWindow(Screen):
 
         # print(f"questionmode: {self.questionmode.state}")
 
-        if self.questionmode.state == "down":
-            questionmode = "situation"
-        else:
-            questionmode = "schema"
+        # TODO
+        # if self.questionmode.state == "down":
+        #     questionmode = "situation"
+        # else:
+        #     questionmode = "schema"
+
+        questionmode = "situation"
 
         store.put("questionmode", questionmode=questionmode)
+
+        # self.questionmode_text.text = questionmode
+
+
+    def questionmodus_alternative(self, *args, **kwargs):
+        # print(f"args question: {args}")
+        # print(f"kargs question: {kwargs}")
+
+        store = JsonStore("numberofquestions.json")
+
+        # print(f"questionmode: {self.questionmode.state}")
+
+        # TODO
+        # if self.questionmode.state == "down":
+        #     questionmode = "situation"
+        # else:
+        #     questionmode = "schema"
+
+        questionmode = "schema"
+
+        store.put("questionmode", questionmode=questionmode)
+
+        # self.questionmode_text.text = questionmode
 
 
     def restart_quiz(self, *args):

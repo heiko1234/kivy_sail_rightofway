@@ -154,13 +154,15 @@ MDScreenManager:
                 text: "Haftungsausschuss \n \n Es kann keinerlei Haftung für Aktualität, Richtigkeit und Vollständigkeit der bereitgestellten Informationen in dieser App übernohmen werden. Im Zweifel sollten Nutzer der App immer die offiziellen Verlautbarungen (z.B. KVR und lokale Regelungen) der einschlägigen Behörden auf Bundes-, Landes- und regionaler Ebene konsultieren und ihr Verhalten ausschließlich nach diesen ausrichten. Lokal spezifische Regelungen greifen vor den allgemeinen Regelungen.  \n \n Haftungsansprüche, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen. \n \n Der App Betreiber behält es sich ausdrücklich vor, Teile der App ohne gesonderte Ankündigung zu verändern, zu ergänzen oder zu löschen. "
 
 
-
+# TODO: fehler beim rendern in App
 <SetupWindow>:
     name: "setupwindow"
 
     number_of_questions: number_of_questions
-    questionmode: questionmode
-    questionmode_alternative: questionmode_alternative
+    # TODO
+    # questionmode: questionmode
+    # questionmode_alternative: questionmode_alternative
+    # questionmode_text: questionmode_text
 
     GridLayout:
         cols: 1
@@ -171,7 +173,7 @@ MDScreenManager:
             size_hint: 0.6, 0.6
             pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
-            Image: 
+            Image:
                 source: "assets/logos/SAIL_logo.png"
 
             MDLabel:
@@ -197,55 +199,108 @@ MDScreenManager:
                 text_color: "black"
 
 
-            # TODO: finalize this behavior
             MDLabel:
                 size_hint: (1, 0.2)
                 text: "FrageModus" #" Situationsbild oder Situationsskizze"
                 halign: "center"
 
 
-            GridLayout:
-                cols: 5
-                size_hint: 0.4, 0.5
+            # GridLayout:
+            #     cols: 2   # 5
+            #     size_hint: 0.4, 0.5
 
-                MDLabel:
-                    text:""
-                    halign: "center"
-                    text_color: "black"
+                # MDLabel:
+                #     text:""
+                #     halign: "center"
+                #     text_color: "black"
 
-                MyToggleButton:
-                    id: questionmode
-                    size_hint: (0.5, 1)
-                    text: "Situationsbild"
-                    group: "questionmodus"
-                    # state: "down"
-                    on_release:
-                        root.questionmodus()
+                # TODO
+                # MyToggleButton:
+                #     id: questionmode
+                #     size_hint: (0.5, 1)
+                #     text: "Situationsbild"
+                #     group: "questionmodus"
+                #     # state: "down"
+                #     on_release:
+                #         root.questionmodus()
 
 
-                MDLabel:
-                    text:""
-                    halign: "center"
-                    text_color: "black"
+                # MDRoundFlatIconButton:
+                #     # id: questionmode
+                #     text: "Situationsbild"
+                #     icon: "sail-boat"
+                #     theme_text_color: "Custom"
+                #     text_color: "blue"
+                #     line_color: "blue"
+                #     halign: "center"
+                #     size_hint: (0.5, 0.9)
+                #     pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                #     on_release:
+                #         root.questionmodus()
 
-                MyToggleButton:
-                    id: questionmode_alternative
-                    size_hint: (0.5, 1)
-                    text: "Situationsskizze"
-                    group: "questionmodus"
-                    # state: "normal"
-                    on_release:
-                        root.questionmodus()
 
-                MDLabel:
-                    text:""
-                    halign: "center"
-                    text_color: "black"
+                # MDLabel:
+                #     text:""
+                #     halign: "center"
+                #     text_color: "black"
 
-            MDLabel:
-                text:""
-                halign: "center"
-                text_color: "black"
+
+                # MDLabel:
+                #     text:""
+                #     halign: "center"
+                #     text_color: "black"
+
+                # MyToggleButton:
+                #     id: questionmode_alternative
+                #     size_hint: (0.5, 1)
+                #     text: "Situationsskizze"
+                #     group: "questionmodus"
+                #     # state: "normal"
+                #     on_release:
+                #         root.questionmodus()
+
+                # MDRoundFlatIconButton:
+                #     # id: questionmode_alternative
+                #     text: "Schemabild"
+                #     icon: "sail-boat"
+                #     theme_text_color: "Custom"
+                #     text_color: "blue"
+                #     line_color: "blue"
+                #     halign: "center"
+                #     size_hint: (0.5, 0.9)
+                #     pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                #     on_release:
+                #         root.questionmodus_alternative()
+
+                # MDLabel:
+                #     text:""
+                #     halign: "center"
+                #     text_color: "black"
+
+            # GridLayout:
+            #     cols: 1
+            #     size_hint: 0.4, 0.5
+
+            #     MDLabel:
+            #         text:""
+            #         halign: "center"
+            #         text_color: "black"
+
+            #     MDLabel:
+            #         text:"Welcher Modus ist aktiv?"
+            #         halign: "center"
+            #         text_color: "black"
+
+            #     MDLabel:
+            #         id: questionmode_text
+            #         text:""
+            #         halign: "center"
+            #         text_color: "black"
+
+            # MDLabel:
+            #     text:""
+            #     halign: "center"
+            #     text_color: "black"
 
             MDRoundFlatIconButton:
                 text: "Zum Spiel"
@@ -591,9 +646,6 @@ MDScreenManager:
                 text: "kivy_sail_rightofway/"
             MDNavigationDrawerItem:
                 text: "issues"
-
-
-
 
             MDNavigationDrawerDivider:
 
