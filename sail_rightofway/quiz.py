@@ -99,9 +99,10 @@ class quiz_sailing():
         self.counter_jumper = 0
         self.number_questions = 10
         self.pic_question = None
-        self.true_false_answer = None
+        self.true_false_answer = True
         self.wind = "wind_00"
         self.questionmodus = "situation"   #schema
+        self.situation = None
 
     def start(self, number_questions = 10, questionmodus="situation"):
 
@@ -109,8 +110,6 @@ class quiz_sailing():
         # number_questions = 10
 
         selected_questions = []
-
-        number_questions = number_questions+0
 
         if number_questions <= len(self.questionlist):
 
@@ -134,10 +133,11 @@ class quiz_sailing():
         self.counter_correct = 0
         self.counter_false = 0
         self.counter_jumper = 0
-        self.pic_question = selected_questions[0]
-        self.true_false_answer = None
-        self.wind = motiv_dict[self.pic_question]["wind"]
+        self.situation = selected_questions[0]
+        self.true_false_answer = True
+        self.wind = motiv_dict[self.situation]["wind"]
         self.questionmodus = questionmodus
+        self.pic_question = None
 
     def show_questionmodus(self):
         return str(self.questionmodus)
@@ -146,26 +146,28 @@ class quiz_sailing():
         # TODO: hier ist irgentwo der fehler, aber nur bei schema
         # if self.questionmodus == "schema"
         # if self.questionmodus == "situation"
-        if "Stb_start" in self.pic_question:
-            return self.pic_question
-        elif (not "Schema" in self.pic_question) and (self.questionmodus == "situation"):
-            return motiv_dict[self.pic_question]["question_situation"]
-        elif (not "Schema" in self.pic_question) and (self.questionmodus == "schema"):
-            print(f"show question pic_question: {self.pic_question}")
-            return motiv_dict[self.pic_question]["question_schema"]
-        elif ("Schema" in self.pic_question) and (self.questionmodus == "situation"):
-            # print(str(self.pic_question))
-            return self.pic_question
-        elif ("Schema" in self.pic_question) and (self.questionmodus == "schema"):
-            # print(str(self.pic_question))
-            return self.pic_question
+
+        # if len(self.sequenz) == 1:
+
+        if (self.sequenz != ["Stb_start"]) and (len(self.sequenz) >= 1) and (self.true_false_answer == True):
+            if self.questionmodus == "situation":
+                return motiv_dict[self.situation]["question_situation"]
+            elif self.questionmodus == "schema":
+                return motiv_dict[self.situation]["question_schema"]
+
+        elif (self.sequenz != ["Stb_start"]) and (len(self.sequenz) >= 1) and (self.true_false_answer == False):
+            return motiv_dict[self.situation]["schema"]
+
+
+        elif (len(self.sequenz)==1) and (self.sequenz == ["Stb_start"]):
+            return "Stb_start"
+
         else:
-            print("some other problems")
-            # return self.pic_question
+            return "Stb_start"
 
     def show_answer(self):
         try:
-            return motiv_dict[self.pic_question]["answer"]
+            return motiv_dict[self.situation]["answer"]
         except BaseException:
             print("No Answer")
 
@@ -185,94 +187,82 @@ class quiz_sailing():
         return str(self.wind)
 
     def answer_question(self, answer):
-        # if self.questionmodus == "schema"
-        # if self.questionmodus == "situation"
+
+        true_false_mode  = self.true_false_answer
 
         try:
-            if answer == motiv_dict[self.sequenz[0]]["answer"]:
+            if (answer == motiv_dict[self.sequenz[0]]["answer"]) and (true_false_mode == True):
 
                 print("answer is correct")
 
                 self.true_false_answer = True
 
-                if len(self.sequenz) >1:
-                    self.sequenz = self.sequenz[1:]
-                    self.counter_correct = self.counter_correct  + 1
-                    self.wind = motiv_dict[self.pic_question]["wind"]
-                    # print(f"sequenz: {self.sequenz}")
-                    # self.pic_question = self.sequenz[0]
-                    if self.questionmodus == "situation":
-                        self.pic_question = motiv_dict[self.sequenz[0]]["question_situation"]
-                    elif self.questionmodus == "schema":
-                        self.pic_question = motiv_dict[self.sequenz[0]]["question_schema"]
-                    # self.counter_correct = self.counter_correct  + 1
-                    # self.wind = motiv_dict[self.pic_question]["wind"]
-
-                elif len(self.sequenz) == 1:
+                if len(self.sequenz) == 1:
                     self.counter_correct = self.counter_correct  + 1
                     self.sequenz = ["Stb_start"]
+                    self.situation = self.sequenz[0]
                     self.pic_question = "Stb_start"
                     self.wind = "wind_00"
 
-            elif answer != motiv_dict[self.pic_question]["answer"]:
+
+                elif len(self.sequenz) >1:
+                    self.sequenz = self.sequenz[1:]
+                    self.situation = self.sequenz[0]
+                    self.counter_correct = self.counter_correct  + 1
+                    self.wind = motiv_dict[self.situation]["wind"]
+
+                    if self.questionmodus == "situation":
+                        self.pic_question = motiv_dict[self.situation]["question_situation"]
+                    elif self.questionmodus == "schema":
+                        self.pic_question = motiv_dict[self.situation]["question_schema"]
+
+
+
+            elif (answer != motiv_dict[self.situation]["answer"]) and (true_false_mode == True):
 
                 print("answer is false")
 
                 self.true_false_answer = False
+                self.counter_false = self.counter_false + 1
 
-                # print(f"wrong anser quiz: {motiv_dict[self.sequenz[0]]['schema']}")
+                self.pic_question = motiv_dict[self.situation]["schema"]
 
-                self.pic_question = motiv_dict[self.sequenz[0]]["schema"]
-                self.counter_false = self.counter_false  + 1
+            elif true_false_mode == False:
+                return self.continue_quiz()
 
             return self.pic_question
 
         except BaseException as be:
             print(f"exception on answering questions: {be}")
-            return self.continue_quiz()
+
 
     def continue_quiz(self):
         # if self.questionmodus == "schema"
         # if self.questionmodus == "situation"
 
-        try:
-            if "Schema" in self.pic_question:
-                if len(self.sequenz) >1:
-                    self.sequenz = self.sequenz[1:]
-                    if self.questionmodus == "situation":
-                        self.pic_question = motiv_dict[self.sequenz[0]]["question_situation"]
-                    elif self.questionmodus == "schema":
-                        self.pic_question = motiv_dict[self.sequenz[0]]["question_schema"]
-                    self.wind = motiv_dict[self.sequenz[0]]["wind"]
+        true_false_mode  = self.true_false_answer
 
-                else:
-                    self.sequenz = ["Stb_start"]
-                    self.pic_question = "Stb_start"
-                    self.wind = "wind_00"
+        if len(self.sequenz) >1:
+            self.sequenz = self.sequenz[1:]
+            self.situation = self.sequenz[0]
+            self.wind = motiv_dict[self.situation]["wind"]
 
-            else:
-                if len(self.sequenz) >1:
-                    self.counter_jumper = self.counter_jumper  + 1
-                    self.sequenz = self.sequenz[1:]
-                    if self.questionmodus == "situation":
-                        self.pic_question = motiv_dict[self.sequenz[0]]["question_situation"]
-                    elif self.questionmodus == "schema":
-                        self.pic_question = motiv_dict[self.sequenz[0]]["question_schema"]
-                    # self.pic_question = self.sequenz[0]["question"]
-                    self.wind = motiv_dict[self.sequenz[0]]["wind"]
+            if true_false_mode == True:
+                self.counter_jumper = self.counter_jumper  + 1
 
-                else:
-                    if self.counter_false + self.counter_correct + self.counter_jumper < self.number_questions:
-                        self.counter_jumper = self.counter_jumper  + 1
-                    self.sequenz = ["Stb_start"]
-                    self.pic_question = "Stb_start"
-                    self.wind = "wind_00"
+            if self.questionmodus == "situation":
+                self.pic_question = motiv_dict[self.situation]["question_situation"]
+            elif self.questionmodus == "schema":
+                self.pic_question = motiv_dict[self.situation]["question_schema"]
 
-        except BaseException:
+            if self.true_false_answer == False:
+                self.true_false_answer = True
+
+        elif len(self.sequenz) == 1:
+            self.sequenz = ["Stb_start"]
             self.pic_question = "Stb_start"
+            self.situation = self.sequenz[0]
             self.wind = "wind_00"
-
-        return self.pic_question
 
 
 # kurshaltepflichtig

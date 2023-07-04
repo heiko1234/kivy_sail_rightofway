@@ -227,20 +227,22 @@ class QuizWindow(Screen):
         output = boat_questions.show_question()
         questionmodus = boat_questions.show_questionmodus()
 
+        true_false_answer_modus = boat_questions.true_false_answer
+
         # if questionmodus == "schema"
         # if questionmodus == "sitution"
         print(f"show_png main: {output}")
         try:
-            if ("Schema" not in output) and (questionmodus=="situation"):
+            if (true_false_answer_modus == True) and (questionmodus=="situation"):
                 self.sail_png.source = f"assets/sails/{output}.png"
-            elif ("Schema" not in output) and (questionmodus=="schema"):
+            elif (true_false_answer_modus == True) and (questionmodus=="schema"):
                 self.sail_png.source = f"assets/question_schema/{output}.png"
             elif "Stb_start" == output:
                 self.sail_png.source = f"assets/sails/{output}.png"
-            elif "Schema" in output:
+            elif true_false_answer_modus == False:
                 self.sail_png.source = f"assets/schema/{output}.png"
-            else:
-                self.sail_png.source = f"assets/schema/{output}.png"
+            # else:
+            #     self.sail_png.source = f"assets/schema/{output}.png"
         except TypeError:
             pass
 
@@ -269,9 +271,7 @@ class QuizWindow(Screen):
     def ausweichen(self, *args):
         boat_questions.answer_question(answer = "ausweichpflichtig")
         self.show_png()
-
         self.show_wind_png()
-
         self.show_toaster()
 
         self.false_counter.text = boat_questions.show_false_count()
@@ -281,9 +281,7 @@ class QuizWindow(Screen):
     def kurshalten(self, *args):
         boat_questions.answer_question(answer = "kurshaltepflichtig")
         self.show_png()
-
         self.show_wind_png()
-
         self.show_toaster()
 
         self.false_counter.text = boat_questions.show_false_count()
@@ -293,7 +291,6 @@ class QuizWindow(Screen):
     def weiter(self, *args):
         boat_questions.continue_quiz()
         self.show_png()
-
         self.show_wind_png()
 
         self.false_counter.text = boat_questions.show_false_count()
