@@ -26,7 +26,7 @@
 MDScreenManager:
     WelcomeWindow:
     QuizWindow:
-    SetupWindow:
+    ConfigurationWindow:
     LawWindow:
     Haftungindow:
 
@@ -109,6 +109,7 @@ MDScreenManager:
                 text: "KVR Regeln \n \n Regel 12 Segelfahrzeuge \n Wenn zwei Segelfahrzeuge \n sich einander so nähern, dass  \n die Möglichkeit der Gefahr  \n eines Zusammenstosses besteht,  \n muss das eine dem \n anderen wie folgt ausweichen: \n \n i) Wenn sie den Wind nicht \n von derselben seite haben,\n muss das Fahrzeug, das den \n Wind von der Backbord hat, \n dem anderen ausweichen.\n \n ii) wenn sie den Wind von \n derselben Seite haben, muss \n das luvwärtige Fahrzeug \n dem leewärtigen ausweichen. \n \n iii) wenn ein Fahrzeug mit \n Wind von Backbord ein \n Fahrzeug in Luv sichtet \n und nicht mit Sicherheit \n feststllen kann, ob das \n andere Fahrzeug den Wind \n von Backbord oder von \n Steuerbord hat, muss \n es dem anderen ausweichen. \n \n Im Sinne der Regel ist  \n die Luvseite diejenige  \n Seite, die dem ggesetzten  \n Grosssegel gegenüberliegt..."
 
 
+
 <Haftungindow>:
     name: "haftungwindow"
 
@@ -154,15 +155,15 @@ MDScreenManager:
                 text: "Haftungsausschuss \n \n Es kann keinerlei Haftung für Aktualität, Richtigkeit und Vollständigkeit der bereitgestellten Informationen in dieser App übernohmen werden. Im Zweifel sollten Nutzer der App immer die offiziellen Verlautbarungen (z.B. KVR und lokale Regelungen) der einschlägigen Behörden auf Bundes-, Landes- und regionaler Ebene konsultieren und ihr Verhalten ausschließlich nach diesen ausrichten. Lokal spezifische Regelungen greifen vor den allgemeinen Regelungen.  \n \n Haftungsansprüche, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen. \n \n Der App Betreiber behält es sich ausdrücklich vor, Teile der App ohne gesonderte Ankündigung zu verändern, zu ergänzen oder zu löschen. "
 
 
-# TODO: fehler beim rendern in App
-<SetupWindow>:
-    name: "setupwindow"
+
+<ConfigurationWindow>:
+    name: "configurationwindow"
+
 
     number_of_questions: number_of_questions
-    # TODO
-    # questionmode: questionmode
-    # questionmode_alternative: questionmode_alternative
-    # questionmode_text: questionmode_text
+    questionmode: questionmode
+    questionmode_alternative: questionmode_alternative
+
 
     GridLayout:
         cols: 1
@@ -190,7 +191,7 @@ MDScreenManager:
                     id: number_of_questions
                     # size_hint: (1, 0.5)
                     hint_text: "Nummer eintragen"
-                    helper_text: "Fragenanzahl: 4 - 30"
+                    helper_text: "Fragenanzahl: 4 - 30, Standard: 10"
                     helper_text_mode: "on_focus"
 
             MDLabel:
@@ -205,9 +206,45 @@ MDScreenManager:
                 halign: "center"
 
 
-            # GridLayout:
-            #     cols: 2   # 5
-            #     size_hint: 0.4, 0.5
+            GridLayout:
+                cols: 5
+                size_hint: 0.4, 0.5
+
+                MDLabel:
+                    text:""
+                    halign: "center"
+                    text_color: "black"
+
+                # TODO
+                # # MyToggleButton:
+                # #     id: questionmode
+                # #     size_hint: (0.5, 1)
+                # #     text: "Situationsbild"
+                # #     group: "questionmodus"
+                # #     # state: "down"
+                # #     on_release:
+                # #         root.questionmodus()
+
+
+                MDRoundFlatIconButton:
+                    id: questionmode
+                    text: "Situationsbild"
+                    icon: "sail-boat"
+                    theme_text_color: "Custom"
+                    text_color: "blue"
+                    line_color: "blue"
+                    halign: "center"
+                    size_hint: (0.5, 0.9)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                    on_release:
+                        root.questionmodus()
+
+
+                MDLabel:
+                    text:""
+                    halign: "center"
+                    text_color: "black"
+
 
                 # MDLabel:
                 #     text:""
@@ -215,67 +252,32 @@ MDScreenManager:
                 #     text_color: "black"
 
                 # TODO
-                # MyToggleButton:
-                #     id: questionmode
-                #     size_hint: (0.5, 1)
-                #     text: "Situationsbild"
-                #     group: "questionmodus"
-                #     # state: "down"
-                #     on_release:
-                #         root.questionmodus()
+                # # MyToggleButton:
+                # #     id: questionmode_alternative
+                # #     size_hint: (0.5, 1)
+                # #     text: "Situationsskizze"
+                # #     group: "questionmodus"
+                # #     # state: "normal"
+                # #     on_release:
+                # #         root.questionmodus()
 
+                MDRoundFlatIconButton:
+                    id: questionmode_alternative
+                    text: "Schemabild"
+                    icon: "sail-boat"
+                    theme_text_color: "Custom"
+                    text_color: "blue"
+                    line_color: "blue"
+                    halign: "center"
+                    size_hint: (0.5, 0.9)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                    on_release:
+                        root.questionmodus_alternative()
 
-                # MDRoundFlatIconButton:
-                #     # id: questionmode
-                #     text: "Situationsbild"
-                #     icon: "sail-boat"
-                #     theme_text_color: "Custom"
-                #     text_color: "blue"
-                #     line_color: "blue"
-                #     halign: "center"
-                #     size_hint: (0.5, 0.9)
-                #     pos_hint: {"center_x": 0.5, "center_y": 0.3}
-                #     on_release:
-                #         root.questionmodus()
-
-
-                # MDLabel:
-                #     text:""
-                #     halign: "center"
-                #     text_color: "black"
-
-
-                # MDLabel:
-                #     text:""
-                #     halign: "center"
-                #     text_color: "black"
-
-                # MyToggleButton:
-                #     id: questionmode_alternative
-                #     size_hint: (0.5, 1)
-                #     text: "Situationsskizze"
-                #     group: "questionmodus"
-                #     # state: "normal"
-                #     on_release:
-                #         root.questionmodus()
-
-                # MDRoundFlatIconButton:
-                #     # id: questionmode_alternative
-                #     text: "Schemabild"
-                #     icon: "sail-boat"
-                #     theme_text_color: "Custom"
-                #     text_color: "blue"
-                #     line_color: "blue"
-                #     halign: "center"
-                #     size_hint: (0.5, 0.9)
-                #     pos_hint: {"center_x": 0.5, "center_y": 0.3}
-                #     on_release:
-                #         root.questionmodus_alternative()
-
-                # MDLabel:
-                #     text:""
-                #     halign: "center"
-                #     text_color: "black"
+                MDLabel:
+                    text:""
+                    halign: "center"
+                    text_color: "black"
 
             # GridLayout:
             #     cols: 1
@@ -297,10 +299,10 @@ MDScreenManager:
             #         halign: "center"
             #         text_color: "black"
 
-            # MDLabel:
-            #     text:""
-            #     halign: "center"
-            #     text_color: "black"
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
 
             MDRoundFlatIconButton:
                 text: "Zum Spiel"
@@ -311,7 +313,7 @@ MDScreenManager:
                 halign: "center"
                 size_hint: (0.1, 0.1)
                 pos_hint: {"center_x": 0.5, "center_y": 0.3}
-                on_release: 
+                on_release:
                     root.switch_to_second_view()
                     root.restart_quiz()
 

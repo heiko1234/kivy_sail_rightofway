@@ -100,12 +100,12 @@ class Haftungindow(Screen):
         self.manager.transition.direction="left"
 
 
-class SetupWindow(Screen):
+class ConfigurationWindow(Screen):
 
     number_of_questions = ObjectProperty()
     # TODO
-    # questionmode = ObjectProperty()
-    # questionmode_alternative = ObjectProperty()
+    questionmode = ObjectProperty()
+    questionmode_alternative = ObjectProperty()
     # questionmode_text = ObjectProperty()
 
     def any_function(self, *args):
@@ -114,7 +114,12 @@ class SetupWindow(Screen):
     def on_enter(self, *args):
 
         store = JsonStore("numberofquestions.json")
-        questionmodus = store.get("questionmode")["questionmode"]
+        try:
+            questionmodus = store.get("questionmode")["questionmode"]
+        except BaseException:
+            questionmodus= "schema"
+            store.put("questionmode", questionmode=questionmodus)
+
 
         # TODO
         # if questionmodus == "situation":
@@ -125,10 +130,20 @@ class SetupWindow(Screen):
         #     self.questionmode.state = "down"
 
         if questionmodus == "situation":
-            # self.questionmode_text.text = "situativ"
-            pass
+            #self.questionmode_text.text = "situativ"
+            self.questionmode.text_color= "white"
+            self.questionmode.md_bg_color= "blue"
+            self.questionmode_alternative.md_bg_color= "white"
+            self.questionmode_alternative.text_color= "blue"
+            # pass
         elif questionmodus == "schema":
-            # self.questionmode_text.text = "schematisch"
+            #self.questionmode_text.text = "schematisch"
+            self.questionmode.text_color= "blue"
+            self.questionmode.md_bg_color= "white"
+            self.questionmode_alternative.md_bg_color= "blue"
+            self.questionmode_alternative.text_color= "white"
+            # pass
+        else:
             pass
 
 
@@ -158,7 +173,10 @@ class SetupWindow(Screen):
         store.put("questionmode", questionmode=questionmode)
 
         # self.questionmode_text.text = questionmode
-
+        self.questionmode.text_color= "white"
+        self.questionmode.md_bg_color= "blue"
+        self.questionmode_alternative.md_bg_color= "white"
+        self.questionmode_alternative.text_color= "blue"
 
     def questionmodus_alternative(self, *args, **kwargs):
         # print(f"args question: {args}")
@@ -179,7 +197,10 @@ class SetupWindow(Screen):
         store.put("questionmode", questionmode=questionmode)
 
         # self.questionmode_text.text = questionmode
-
+        self.questionmode.text_color= "blue"
+        self.questionmode.md_bg_color= "white"
+        self.questionmode_alternative.md_bg_color= "blue"
+        self.questionmode_alternative.text_color= "white"
 
     def restart_quiz(self, *args):
 
@@ -219,7 +240,7 @@ class QuizWindow(Screen):
     wind_png = ObjectProperty(None)
 
     def switch_to_setup_view(self, *args):
-        self.manager.current = "setupwindow"
+        self.manager.current = "configurationwindow" # "setupwindow"
         self.manager.transition.direction="left"
 
     def any_function(self, *args):

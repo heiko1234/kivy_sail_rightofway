@@ -242,23 +242,34 @@ class quiz_sailing():
 
         true_false_mode  = self.true_false_answer
 
-        if len(self.sequenz) >1:
-            self.sequenz = self.sequenz[1:]
-            self.situation = self.sequenz[0]
-            self.wind = motiv_dict[self.situation]["wind"]
+        if (len(self.sequenz) >= 1) and self.sequenz != ["Stb_start"]:
 
             if true_false_mode == True:
                 self.counter_jumper = self.counter_jumper  + 1
 
-            if self.questionmodus == "situation":
-                self.pic_question = motiv_dict[self.situation]["question_situation"]
-            elif self.questionmodus == "schema":
-                self.pic_question = motiv_dict[self.situation]["question_schema"]
+            try:
+                self.sequenz = self.sequenz[1:]
+                self.situation = self.sequenz[0]
+                self.wind = motiv_dict[self.situation]["wind"]
 
-            if self.true_false_answer == False:
-                self.true_false_answer = True
+                if self.questionmodus == "situation":
+                    self.pic_question = motiv_dict[self.situation]["question_situation"]
+                elif self.questionmodus == "schema":
+                    self.pic_question = motiv_dict[self.situation]["question_schema"]
 
-        elif len(self.sequenz) == 1:
+                if self.true_false_answer == False:
+                    self.true_false_answer = True
+
+            except BaseException:
+                self.sequenz = ["Stb_start"]
+                self.pic_question = "Stb_start"
+                self.situation = self.sequenz[0]
+                self.wind = "wind_00"
+
+
+
+        # elif len(self.sequenz) == 1:
+        else:
             self.sequenz = ["Stb_start"]
             self.pic_question = "Stb_start"
             self.situation = self.sequenz[0]
