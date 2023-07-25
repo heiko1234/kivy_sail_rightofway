@@ -15,6 +15,8 @@ from kivy.uix.screenmanager import Screen
 # from kivymd.toast.kivytoast.kivytoast import toast
 from kivymd.toast import toast
 
+from kivy.core.audio import SoundLoader
+
 # from sail_class import sail_infos, sail_scenario
 
 
@@ -246,6 +248,28 @@ class QuizWindow(Screen):
     def any_function(self, *args):
         pass
 
+    def play_crashsound(self, *args):
+        sound = SoundLoader.load("assets/sounds/boat_crash_1.wav")
+        if sound:
+            sound.play()
+
+    def play_successsound(self, *args):
+        sound = SoundLoader.load("assets/sounds/sucess.wav")
+        if sound:
+            sound.play()
+
+    def play_sound(self, *args):
+        output = boat_questions.show_true_false_answer()
+
+        if output is None:
+            pass
+        elif output:
+            self.play_successsound()
+        else:
+            self.play_crashsound()
+
+
+
     def switch_to_lawview(self, *args):
         self.manager.current = "lawwindow"
         self.manager.transition.direction="left"
@@ -333,6 +357,7 @@ class QuizWindow(Screen):
         self.show_png()
         self.show_wind_png()
         self.show_toaster()
+        self.play_sound()
 
         self.false_counter.text = boat_questions.show_false_count()
         self.true_counter.text = boat_questions.show_correct_count()
@@ -343,6 +368,7 @@ class QuizWindow(Screen):
         self.show_png()
         self.show_wind_png()
         self.show_toaster()
+        self.play_sound()
 
         self.false_counter.text = boat_questions.show_false_count()
         self.true_counter.text = boat_questions.show_correct_count()
@@ -352,6 +378,7 @@ class QuizWindow(Screen):
         boat_questions.continue_quiz()
         self.show_png()
         self.show_wind_png()
+        self.play_sound()
 
         self.false_counter.text = boat_questions.show_false_count()
         self.true_counter.text = boat_questions.show_correct_count()

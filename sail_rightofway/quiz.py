@@ -149,6 +149,9 @@ class quiz_sailing():
 
         # if len(self.sequenz) == 1:
 
+        if self.sequenz == None:
+            return "Stb_start"
+
         if (self.sequenz != ["Stb_start"]) and (len(self.sequenz) >= 1) and (self.true_false_answer == True):
             if self.questionmodus == "situation":
                 return motiv_dict[self.situation]["question_situation"]
@@ -239,6 +242,9 @@ class quiz_sailing():
     def continue_quiz(self):
         # if self.questionmodus == "schema"
         # if self.questionmodus == "situation"
+
+        if self.sequenz == None:
+            return "Stb_start"
 
         true_false_mode  = self.true_false_answer
 
