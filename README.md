@@ -56,6 +56,14 @@ https://kivymd.readthedocs.io/en/1.1.1/getting-started/
 
 
 
+# Sounds
+
+# idea https://www.youtube.com/watch?v=YqseTGOnzYg
+
+convert with audocity
+
+
+
 
 ## Screens of the App
 

@@ -249,12 +249,12 @@ class QuizWindow(Screen):
         pass
 
     def play_crashsound(self, *args):
-        sound = SoundLoader.load("assets/sounds/boat_crash_1.wav")
+        sound = SoundLoader.load("assets/sounds/boat_hit.wav")
         if sound:
             sound.play()
 
     def play_successsound(self, *args):
-        sound = SoundLoader.load("assets/sounds/sucess.wav")
+        sound = SoundLoader.load("assets/sounds/success.wav")
         if sound:
             sound.play()
 
