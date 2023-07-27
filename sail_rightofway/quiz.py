@@ -80,7 +80,7 @@ motiv_dict={
         "question_situation": "Stb_Stb2",
         "question_schema": "Stb_Stb_Frage2",
         "answer": "ausweichpflichtig",
-        "schema": "Bb_Bb_Schema",
+        "schema": "Stb_Stb_Schema2",
         "wind": "wind_315"
     },
 }
