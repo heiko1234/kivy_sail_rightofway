@@ -39,11 +39,12 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-# TODO: always update specifically
+# TODO: always update specifically    attention with spaces 
 # https://pypi.org/project/kivymd/
 # requirements = python3==3.8.10, kivy==2.1.0, kivymd==1.1.1, sdl2_ttf, pillow, pyyaml==6.0, python-dotenv==0.21.1
 # requirements = python3, kivy==2.1.0, kivymd==1.1.1, pillow, pyyaml==6.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15
-requirements = python3, kivy==2.1.0, kivymd==1.0.2, pillow, pyyaml==6.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15
+# requirements = python3, kivy==2.1.0, kivymd==1.0.2, pillow, pyyaml==6.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15
+requirements = python3==3.10.6, kivy==2.2.1, kivymd==1.1.1, pillow==10.0.0, pyyaml==6.0.1, pysdl2==0.9.16, pysdl2-dll==2.28.0, cython==0.29.36
 
 
 

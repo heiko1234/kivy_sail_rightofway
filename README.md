@@ -107,6 +107,20 @@ java -verion #11.0.18
 
 ```
 
+
+
+```dash
+# additionally
+
+sudo apt install libltdl-dev
+
+sudo apt install libffi-dev
+
+sudo apt-get update
+
+```
+
+
 In case sdk-tools get not installed, do it manually, but there is a deeper problem.
 
 https://stackoverflow.com/questions/59330223/sdkmanager-not-installed
