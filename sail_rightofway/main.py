@@ -1,12 +1,13 @@
-
-
 # https://github.com/kivymd/KivyMD/blob/master/kivymd/icon_definitions.py
 # Kivy MD
 # https://www.youtube.com/watch?v=LRXo0juuTrw&list=PLhTjy8cBISEoQQLZ9IBlVlr4WjVoStmy-
-
 # from kivy.config import Config
 # Config.set('kivy','keyboard_mode','systemanddock')
-
+#
+#
+# Kivy MD
+# init the boat outside of Screen
+from quiz import quiz_sailing
 
 from kivymd.app import MDApp
 
@@ -27,18 +28,17 @@ from kivy.properties import ObjectProperty
 from kivy.clock import Clock
 
 # background Threading
-from threading import Thread
+# from threading import Thread
 
 # partial: funktions reverenz + parameter übergabe
-from functools import partial
+# from functools import partial
 
 from kivy.storage.jsonstore import JsonStore
 
 # Open a weblink
 import webbrowser
 
-# init the boat outside of Screen
-from quiz import quiz_sailing
+
 
 boat_questions = quiz_sailing()
 
@@ -378,7 +378,8 @@ class QuizWindow(Screen):
         boat_questions.continue_quiz()
         self.show_png()
         self.show_wind_png()
-        self.play_sound()
+        # self.play_sound()
+        self.play_successsound()
 
         self.false_counter.text = boat_questions.show_false_count()
         self.true_counter.text = boat_questions.show_correct_count()

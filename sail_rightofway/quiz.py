@@ -22,7 +22,7 @@ motiv_dict={
         "question_schema": "Bb_Bb_Frage2",
         "answer": "kurshaltepflichtig",
         "schema": "Bb_Bb_Schema",
-        "wind": "wind_315"
+        "wind": "wind_225"
     },
     # Bb_Stb
     "Bb_Stb1": {

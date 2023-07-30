@@ -8,14 +8,20 @@ package.name = sail_rightofway
 
 # (str) Package domain (needed for android/ios packaging)
 # package.domain = org.test
+# TODO
 package.domain = org.sail_rightofway
 
 
+
 # (str) Source code where the main.py live
+# TODO
 source.dir = sail_rightofway
 
+
+
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas, yaml
+source.include_exts = py,png,jpg,kv,atlas, yaml, wav, mp3, aac
+
 
 # (list) List of inclusions using pattern matching
 source.include_patterns = assets/*,images/*.png
@@ -44,7 +50,11 @@ version = 0.1
 # requirements = python3==3.8.10, kivy==2.1.0, kivymd==1.1.1, sdl2_ttf, pillow, pyyaml==6.0, python-dotenv==0.21.1
 # requirements = python3, kivy==2.1.0, kivymd==1.1.1, pillow, pyyaml==6.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15
 # requirements = python3, kivy==2.1.0, kivymd==1.0.2, pillow, pyyaml==6.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15
-requirements = python3==3.10.6, kivy==2.2.1, kivymd==1.1.1, pillow==10.0.0, pyyaml==6.0.1, pysdl2==0.9.16, pysdl2-dll==2.28.0, cython==0.29.36
+#, cython==0.29.36, kivy==master
+# requirements = python3==3.10.6, kivy==2.2.1, kivymd==1.0.2, pillow==10.0.0, pyyaml==6.0.1, pysdl2==0.9.16, pysdl2-dll==2.28.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15, cython==0.29.36, pyjnius==1.5.0
+# requirements = python3==3.10.6, kivy==2.1.0, kivymd==1.1.1, pillow==9.5.0, pyyaml==6.0.1, pysdl2==0.9.16, pysdl2-dll==2.28.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15, cython==0.29.36, pyjnius==1.5.0
+
+requirements = python3==3.10.6, kivy==2.1.0, kivymd==1.0.2, pillow==9.5.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15, pyjnius==1.4.2
 
 
 
@@ -52,17 +62,20 @@ requirements = python3==3.10.6, kivy==2.2.1, kivymd==1.1.1, pillow==10.0.0, pyya
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
 
+
 # (str) Presplash of the application
 #presplash.filename = %(source.dir)s/data/presplash.png
 # Kreis mit Heal schrifts
 # presplash.filename = assets/Health_logo3.png
 presplash.filename = assets/logos/SAIL_Right_of_way_white.png
 
+
 # (str) Icon of the application
 #icon.filename = %(source.dir)s/data/icon.png
 # Kreis
 # icon.filename = ./assets/Health_logo.png
 icon.filename = ./assets/logos/SAIL_Right_of_way.png
+
 
 # (list) Supported orientations
 # Valid options are: landscape, portrait, portrait-reverse or landscape-reverse
@@ -84,7 +97,10 @@ osx.python_version = 3
 # Kivy version to use
 # osx.kivy_version = 1.9.1
 # osx.kivy_version = 2.0.0
-osx.kivy_version = 2.1.0
+# osx.kivy_version = 2.1.0
+# osx.kivy_version = 2.2.1
+osy.kivy_version = 2.1.0
+
 
 #
 # Android specific
@@ -143,9 +159,12 @@ fullscreen = 0
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
 #android.sdk_path =
 # android.sdk_path = /home/heiko/Repos/kivy/kivy_health_repo/kivy_health/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
-
-android.sdk_path = /home/heiko/Repos/kivy/kivy_sail_right_of_way/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
-
+# TODO: when empty, gets downloaded, else check the path
+# android.sdk_path =
+# android.sdk_path = /home/heiko/Schreibtisch/Repos/kivy_apps/kivy_sail_right_of_way/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
+# got a new path for repo: kivy_sail_rightofway
+# android.sdk_path = /home/heiko/Schreibtisch/Repos/kivy_apps/kivy_sail_rightofway/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
+android.sdk_path = /home/heiko/Schreibtisch/Repos/kivy_apps/kivy_sail_rightofway/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
 #android.ant_path = 

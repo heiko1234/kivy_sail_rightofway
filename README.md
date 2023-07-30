@@ -286,6 +286,11 @@ adb -s 29477c1e logcat *:S python:D
 # creat the apk
 buildozer -v android debug
 
+buildozer android debug deploy run logcat
+
+
+adb logcat -s python
+
 # switch to dir of bin
 cd ./bin
 
@@ -302,6 +307,12 @@ adb -s 29477c1e install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug.apk
 
 ```
 
+
+## Release on the market¶
+
+If you have built your own APK with Buildozer or with python-for-android, you can create a release version that may be released on the Play store or other Android markets.
+
+To do this, you must run Buildozer with the release parameter (e.g. buildozer android release), or if using python-for-android use the --release option to build.py. This creates a release AAB in the bin directory, which you must properly sign and zipalign. The procedure for doing this is described in the Android documentation at https://developer.android.com/studio/publish/app-signing.html#signing-manually - all the necessary tools come with the Android SDK.
 
 
 
