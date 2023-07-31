@@ -254,7 +254,7 @@ class QuizWindow(Screen):
             sound.play()
 
     def play_successsound(self, *args):
-        sound = SoundLoader.load("assets/sounds/success.wav")
+        sound = SoundLoader.load("assets/sounds/success3.wav")
         if sound:
             sound.play()
 

@@ -54,7 +54,9 @@ version = 0.1
 # requirements = python3==3.10.6, kivy==2.2.1, kivymd==1.0.2, pillow==10.0.0, pyyaml==6.0.1, pysdl2==0.9.16, pysdl2-dll==2.28.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15, cython==0.29.36, pyjnius==1.5.0
 # requirements = python3==3.10.6, kivy==2.1.0, kivymd==1.1.1, pillow==9.5.0, pyyaml==6.0.1, pysdl2==0.9.16, pysdl2-dll==2.28.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15, cython==0.29.36, pyjnius==1.5.0
 
-requirements = python3==3.10.6, kivy==2.1.0, kivymd==1.0.2, pillow==9.5.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15, pyjnius==1.4.2
+# requirements = python3==3.10.6, kivy==2.1.0, kivymd==1.0.2, pillow==9.5.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15, pyjnius==1.4.2
+requirements = python3==3.10.6, kivy==2.2.1, kivymd==1.0.2, pillow==9.5.0, python-dotenv==0.21.1
+
 
 
 
@@ -164,7 +166,7 @@ fullscreen = 0
 # android.sdk_path = /home/heiko/Schreibtisch/Repos/kivy_apps/kivy_sail_right_of_way/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
 # got a new path for repo: kivy_sail_rightofway
 # android.sdk_path = /home/heiko/Schreibtisch/Repos/kivy_apps/kivy_sail_rightofway/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
-android.sdk_path = /home/heiko/Schreibtisch/Repos/kivy_apps/kivy_sail_rightofway/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
+# android.sdk_path = /home/heiko/Schreibtisch/Repos/kivy_apps/kivy_sail_rightofway/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
 #android.ant_path = 

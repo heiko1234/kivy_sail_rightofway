@@ -416,13 +416,12 @@ requests = "*"
 
 [[package]]
 name = "kivymd"
-version = "1.0.2"
+version = "1.1.1"
 description = "Set of widgets for Kivy inspired by Google's Material Design"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "kivymd-1.0.2-py3-none-any.whl", hash = "sha256:978d51751601cc1c1097d256087e4fab56a3fa1bcda7a26a4cbd9abc598a25aa"},
-    {file = "kivymd-1.0.2.tar.gz", hash = "sha256:4274721bd9672d507fbe70dc5173a1ce8c57d9f305f91d2bea58bf588c49fe62"},
+    {file = "kivymd-1.1.1.tar.gz", hash = "sha256:931a0435c2a079c6dca755c50d0023b5e1c907f7b4ac8bb9e2834daa3cefe906"},
 ]
 
 [package.dependencies]
@@ -430,7 +429,7 @@ kivy = ">=2.0.0"
 pillow = "*"
 
 [package.extras]
-dev = ["black", "coveralls", "flake8", "isort[pyproject]", "pre-commit", "pyinstaller[hook-testing]", "pytest", "pytest-asyncio", "pytest-cov", "pytest-timeout"]
+dev = ["black", "coveralls", "flake8", "isort[pyproject]", "pre-commit", "pyinstaller[hook-testing]", "pytest", "pytest-cov", "pytest-timeout", "pytest_asyncio"]
 docs = ["furo", "sphinx", "sphinx-autoapi (==1.4.0)", "sphinx-copybutton", "sphinx-notfound-page", "sphinx-tabs"]
 
 [[package]]
@@ -889,4 +888,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">= 3.10, < 3.11"
-content-hash = "a4db3383c35c3d8c39b03afa72eeb705eed8327af037ccbbfd94c3d76ec1e48c"
+content-hash = "c2e64f934583b6401555c89479bff2c1e183cd1d9c8333e756d108597e8ab196"
