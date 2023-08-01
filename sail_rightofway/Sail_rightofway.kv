@@ -161,7 +161,7 @@ MDScreenManager:
     name: "anleitungwindow"
 
     GridLayout:
-        col: 1
+        cols: 1
         size_hint: 0.995, 0.995
 
         GridLayout:
@@ -189,29 +189,38 @@ MDScreenManager:
                 text:""
                 halign: "center"
                 text_color: "black"
-            
-        MDScrollView:
 
-            GridLayout:
-                cols: 1
-                size_hint: 0.995, 0.995
 
-                MDLabel:
-                    text_color: "black"
-                    size_hint: 1, None
-                    height: self.texture_size[1]
-                    text_size: self.width, None
-                    text: "Anleitung \n \n Die App ist ein Quiz, welches die Ausweichregeln Regeln nach KVR abfragt. \n \n Die App ist für 1 Spieler konzipiert. \n Die App stellt Fragen, die entweder schematisch oder situativ gestellt werden. Die Fragen werden zufällig ausgewählt. \n \n Zum Starten des Quiz Modus gibt es 2 Möglichkeiten: \n Entweder auf dem Startbildschirm das Segelboot Icon am unteren Rand antippen \n oder unter Optionen das Segelboot Icon 'Start' antippen."
+        GridLayout:
+            cols: 1
+            size_hint: 0.9, 0.9
 
-                Image:
-                    source: "assets/readme/start.png"
+            MDScrollView:
 
-                MDLabel:
-                    text_color: "black"
-                    size_hint: 1, None
-                    height: self.texture_size[1]
-                    text_size: self.width, None
-                    text: "\n Die App stellt eine gewisse Anzahl an Fragen, dazu werden Situationen eingeblendet und z.B. Informationen zur Windrichtung gegeben. Der Spieler soll dann die richtige Antwort auswählen. \n \n Die App gibt nach jeder Frage eine akustische Rückmeldung, ob die Antwort richtig oder falsch war. \n Zudem werden die Antworten in richtig (grün), falsch (rot) und übersprungen (orange) gezählt. Der Spieler kann jederzeit neustarten, oder unter Optionen die Anzahl der Fragen und den Fragemodus ändern."
+                GridLayout:
+                    cols: 1
+
+                    MDLabel:
+                        text_color: "black"
+                        size_hint: 1, None
+                        height: self.texture_size[1]
+                        text_size: self.width, None
+                        text: "Anleitung \n \n Die App ist ein Quiz, welches die Ausweichregeln Regeln nach KVR abfragt. \n \n Die App ist für 1 Spieler konzipiert. \n Es gibt 2 Spiel Modi. \n Zum Starten des Quiz Modus gibt es 2 Möglichkeiten: \n Entweder auf dem Startbildschirm das Segelboot Icon am unteren Rand antippen \n oder unter Optionen das Segelboot Icon 'Start' antippen."
+
+                    Image:
+                        source: "assets/readme/start.png"
+                        size: self.texture_size
+                        # size_hint_y: 0.9
+                        size: 300, 300
+                        allow_stretch: True
+                        keep_ratio: True
+
+                    MDLabel:
+                        text_color: "black"
+                        size_hint: 1, None
+                        height: self.texture_size[1]
+                        text_size: self.width, None
+                        text: "\n Die App gibt nach jeder Frage eine akustische Rückmeldung, ob die Antwort richtig oder falsch war. \n Zudem werden die Antworten in richtig (grün), falsch (rot) und übersprungen (orange) gezählt."
 
 
 
