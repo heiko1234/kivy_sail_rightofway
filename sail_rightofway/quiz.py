@@ -21,7 +21,7 @@ motiv_dict={
         "question_situation": "Bb_Bb2",
         "question_schema": "Bb_Bb_Frage2",
         "answer": "kurshaltepflichtig",
-        "schema": "Bb_Bb_Schema",
+        "schema": "Bb_Bb_Schema2",
         "wind": "wind_225"
     },
     # Bb_Stb
