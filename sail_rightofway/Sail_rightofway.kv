@@ -29,6 +29,7 @@ MDScreenManager:
     ConfigurationWindow:
     LawWindow:
     Haftungindow:
+    AnleitungWindow:
 
 
 <WelcomeWindow>:
@@ -153,6 +154,64 @@ MDScreenManager:
                 height: self.texture_size[1]
                 text_size: self.width, None
                 text: "Haftungsausschuss \n \n Es kann keinerlei Haftung für Aktualität, Richtigkeit und Vollständigkeit der bereitgestellten Informationen in dieser App übernohmen werden. Im Zweifel sollten Nutzer der App immer die offiziellen Verlautbarungen (z.B. KVR und lokale Regelungen) der einschlägigen Behörden auf Bundes-, Landes- und regionaler Ebene konsultieren und ihr Verhalten ausschließlich nach diesen ausrichten. Lokal spezifische Regelungen greifen vor den allgemeinen Regelungen.  \n \n Haftungsansprüche, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen. \n \n Der App Betreiber behält es sich ausdrücklich vor, Teile der App ohne gesonderte Ankündigung zu verändern, zu ergänzen oder zu löschen. "
+
+
+
+<AnleitungWindow>:
+    name: "anleitungwindow"
+
+    GridLayout:
+        col: 1
+        size_hint: 0.995, 0.995
+
+        GridLayout:
+            cols: 3
+            size_hint: 0.05, 0.1
+
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
+
+            MDRoundFlatIconButton:
+                text: "Zurück zum Spiel"
+                icon: "sail-boat"
+                theme_text_color: "Custom"
+                text_color: "blue"
+                line_color: "blue"
+                halign: "center"
+                size_hint: (0.1, 0.1)
+                pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                on_release: 
+                    root.entrance_button_behavior()
+
+            MDLabel:
+                text:""
+                halign: "center"
+                text_color: "black"
+            
+        MDScrollView:
+
+            GridLayout:
+                cols: 1
+                size_hint: 0.995, 0.995
+
+                MDLabel:
+                    text_color: "black"
+                    size_hint: 1, None
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+                    text: "Anleitung \n \n Die App ist ein Quiz, welches die Ausweichregeln Regeln nach KVR abfragt. \n \n Die App ist für 1 Spieler konzipiert. \n Die App stellt Fragen, die entweder schematisch oder situativ gestellt werden. Die Fragen werden zufällig ausgewählt. \n \n Zum Starten des Quiz Modus gibt es 2 Möglichkeiten: \n Entweder auf dem Startbildschirm das Segelboot Icon am unteren Rand antippen \n oder unter Optionen das Segelboot Icon 'Start' antippen."
+
+                Image:
+                    source: "assets/readme/start.png"
+
+                MDLabel:
+                    text_color: "black"
+                    size_hint: 1, None
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+                    text: "\n Die App stellt eine gewisse Anzahl an Fragen, dazu werden Situationen eingeblendet und z.B. Informationen zur Windrichtung gegeben. Der Spieler soll dann die richtige Antwort auswählen. \n \n Die App gibt nach jeder Frage eine akustische Rückmeldung, ob die Antwort richtig oder falsch war. \n Zudem werden die Antworten in richtig (grün), falsch (rot) und übersprungen (orange) gezählt. Der Spieler kann jederzeit neustarten, oder unter Optionen die Anzahl der Fragen und den Fragemodus ändern."
 
 
 
@@ -344,7 +403,7 @@ MDScreenManager:
             # md_bg_color: "#e7e4c0"
             # https://pictogrammers.com/library/mdi/
             # https://github.com/kivymd/KivyMD/blob/master/kivymd/icon_definitions.py
-            left_action_items: [["ship-wheel", lambda x: left_nav_drawer.set_state("open"), "", ""], ["gavel", lambda x: root.switch_to_lawview(x), "", ""]]
+            left_action_items: [["ship-wheel", lambda x: left_nav_drawer.set_state("open"), "", ""], ["gavel", lambda x: root.switch_to_lawview(x), "", ""], ["help", lambda x: root.switch_to_anleitungview(x), "", ""]]
 
             # scale-balance , gavel
 

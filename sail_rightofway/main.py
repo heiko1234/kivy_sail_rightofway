@@ -102,6 +102,20 @@ class Haftungindow(Screen):
         self.manager.transition.direction="left"
 
 
+class AnleitungWindow(Screen):
+
+    def any_functin(self, *args):
+        pass
+
+    def entrance_button_behavior(self, *args):
+        Clock.schedule_once(self.switch_to_second_view, 1)
+
+    def switch_to_second_view(self, *args):
+        self.manager.current = "quizwindow"
+        self.manager.transition.direction="left"
+
+
+
 class ConfigurationWindow(Screen):
 
     number_of_questions = ObjectProperty()
@@ -277,6 +291,11 @@ class QuizWindow(Screen):
     def switch_to_haftungsview(self, *args):
         self.manager.current = "haftungwindow"
         self.manager.transition.direction="right"
+        
+    def switch_to_anleitungview(self, *args):
+        self.manager.current = "anleitungwindow"
+        self.manager.transition.direction="right"
+
 
     def restart_quiz(self, *args):
 
