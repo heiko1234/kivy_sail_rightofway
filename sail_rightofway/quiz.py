@@ -10,7 +10,7 @@ import time
 
 motiv_dict={
     # Bb_Bb
-    "Bb_Bb1": {
+    "Bb_Bb1": {                           # ok
         "question_situation": "Bb_Bb1",
         "question_schema": "Bb_Bb_Frage1",
         "answer": "kurshaltepflichtig",
@@ -18,28 +18,28 @@ motiv_dict={
         "wind": "wind_315"
     },
     "Bb_Bb2": {
-        "question_situation": "Bb_Bb2",
+        "question_situation": "Bb_Bb2",     # updated
         "question_schema": "Bb_Bb_Frage2",
-        "answer": "kurshaltepflichtig",
+        "answer": "ausweichpflichtig",
         "schema": "Bb_Bb_Schema2",
         "wind": "wind_225"
     },
     # Bb_Stb
-    "Bb_Stb1": {
+    "Bb_Stb1": {                             # ok
         "question_situation": "Bb_Stb1",
         "question_schema": "Bb_Stb_Frage1",
         "answer": "ausweichpflichtig",
         "schema": "Bb_Stb_Schema",
         "wind": "wind_270"
     },
-    "Bb_Stb2": {
+    "Bb_Stb2": {                           # ok
         "question_situation": "Bb_Stb2",
         "question_schema": "Bb_Stb_Frage2",
         "answer": "ausweichpflichtig",
         "schema": "Bb_Stb_Schema2",
         "wind": "wind_225"
     },
-    "Bb_Stb3": {
+    "Bb_Stb3": {                           # ok
         "question_situation": "Bb_Stb3",
         "question_schema": "Bb_Stb_Frage3",
         "answer": "ausweichpflichtig",
@@ -47,21 +47,21 @@ motiv_dict={
         "wind": "wind_315"
     },
     # Stb_Bb
-    "Stb_Bb1": {
+    "Stb_Bb1": {                           # ok
         "question_situation": "Stb_Bb1",
         "question_schema": "Stb_Bb_Frage1",
         "answer": "kurshaltepflichtig",
         "schema": "Stb_Bb_Schema",
         "wind": "wind_90"
     },
-    "Stb_Bb2": {
+    "Stb_Bb2": {                           # ok
         "question_situation": "Stb_Bb2",
         "question_schema": "Stb_Bb_Frage2",
         "answer": "kurshaltepflichtig",
         "schema": "Stb_Bb_Schema2",
         "wind": "wind_135"
     },
-    "Stb_Bb3": {
+    "Stb_Bb3": {                          # ok
         "question_situation": "Stb_Bb3",
         "question_schema": "Stb_Bb_Frage3",
         "answer": "kurshaltepflichtig",
@@ -69,14 +69,14 @@ motiv_dict={
         "wind": "wind_45"
     },
     # Stb_Stb
-    "Stb_Stb1": {
+    "Stb_Stb1": {                          # ok
         "question_situation": "Stb_Stb1",
         "question_schema": "Stb_Stb_Frage1",
         "answer": "kurshaltepflichtig",
         "schema": "Stb_Stb_Schema",
         "wind": "wind_45"
     },
-    "Stb_Stb2": {
+    "Stb_Stb2": {                           # ok
         "question_situation": "Stb_Stb2",
         "question_schema": "Stb_Stb_Frage2",
         "answer": "ausweichpflichtig",
