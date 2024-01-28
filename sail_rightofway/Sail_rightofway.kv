@@ -153,7 +153,7 @@ MDScreenManager:
                 size_hint: 1, None
                 height: self.texture_size[1]
                 text_size: self.width, None
-                text: "Haftungsausschuss \n \n Es kann keinerlei Haftung für Aktualität, Richtigkeit und Vollständigkeit der bereitgestellten Informationen in dieser App übernohmen werden. Im Zweifel sollten Nutzer der App immer die offiziellen Verlautbarungen (z.B. KVR und lokale Regelungen) der einschlägigen Behörden auf Bundes-, Landes- und regionaler Ebene konsultieren und ihr Verhalten ausschließlich nach diesen ausrichten. Lokal spezifische Regelungen greifen vor den allgemeinen Regelungen.  \n \n Haftungsansprüche, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen. \n \n Der App Betreiber behält es sich ausdrücklich vor, Teile der App ohne gesonderte Ankündigung zu verändern, zu ergänzen oder zu löschen. "
+                text: "Haftungsausschuss \n \n Es kann keinerlei Haftung für Aktualität, Richtigkeit und Vollständigkeit der bereitgestellten Informationen in dieser App übernohmen werden. Im Zweifel sollten Nutzer der App immer die offiziellen Verlautbarungen (z.B. KVR und lokale Regelungen) der einschlägigen Behörden auf Bundes-, Landes- und regionaler Ebene konsultieren und ihr Verhalten ausschließlich nach diesen ausrichten. Lokal spezifische Regelungen greifen vor den allgemeinen Regelungen.  \n \n Haftungsansprüche, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen. \n \n Der App Betreiber behält es sich ausdrücklich vor, Teile der App ohne gesonderte Ankündigung zu verändern, zu ergänzen oder zu löschen. \n \n Datenschutz \n Auf deinem Smartphone werden nur deine App Einstellungen 'FrageModus' und 'Anzahl der Frage' in einem Config File gespeichert. Es werden keine User Profile, Nutzer Daten oder anderes aufgezeichnet, gespeichert oder an irgentwen übertragen. Die App zeichnet auch keine sonstigen Nutzerverhalten ausserhalb der App auf. \n Der Code ist Open Source und kann in Github (https://github.com/heiko1234/kivy_sail_rightofway) eingesehen werden. \n \n Viel Spass beim Spielen."
 
 
 
@@ -205,7 +205,7 @@ MDScreenManager:
                         size_hint: 1, None
                         height: self.texture_size[1]
                         text_size: self.width, None
-                        text: "Anleitung \n \n Die App ist ein Quiz, welches die Ausweichregeln Regeln nach KVR abfragt. \n \n Die App ist für 1 Spieler konzipiert. \n Es gibt 2 Spiel Modi. \n Zum Starten des Quiz Modus gibt es 2 Möglichkeiten: \n Entweder auf dem Startbildschirm das Segelboot Icon am unteren Rand antippen \n oder unter Optionen das Segelboot Icon 'Start' antippen."
+                        text: "Anleitung \n \n Die App ist ein Quiz, welches die Ausweichregeln nach KVR abfragt. \n \n Die App ist für 1 Spieler konzipiert. \n Es gibt 2 Spiel Modi. \n Zum Starten des Quiz Modus gibt es 2 Möglichkeiten: \n Entweder auf dem Startbildschirm das Segelboot Icon am unteren Rand antippen \n oder unter Optionen das Segelboot Icon 'Start' antippen."
 
                     Image:
                         source: "assets/readme/start.png"
@@ -674,6 +674,15 @@ MDScreenManager:
             MDNavigationDrawerDivider:
 
             MDNavigationDrawerLabel:
+                text: "Steuernummer"
+
+            MDNavigationDrawerItem:
+                icon: "bank"
+                text: "44/544/07442"
+
+            MDNavigationDrawerDivider:
+
+            MDNavigationDrawerLabel:
                 text: "Kontaktaufnahme"
 
             MDNavigationDrawerItem:
@@ -682,7 +691,7 @@ MDScreenManager:
 
             MDNavigationDrawerItem:
                 icon: "phone"
-                text: "01577 13 2 13 54"
+                text: "write an email"  # "01577 13 2 13 54"
             MDNavigationDrawerDivider:
 
             MDNavigationDrawerLabel:

@@ -291,6 +291,15 @@ buildozer android debug deploy run logcat
 
 adb logcat -s python
 
+
+# get a list of devices
+adb devices
+
+
+# release for market: app store
+buildozer android release
+
+
 # switch to dir of bin
 cd ./bin
 
