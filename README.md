@@ -311,8 +311,23 @@ cd ./bin
 # transfer apk from ./bin/ folder:
 # adb -s 29477c1e install sailcommander-0.1-arm64-v8a_armeabi-v7a-debug.apk
 
+# mobile
 adb -s 29477c1e install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug.apk
 
+
+# (.venv) heiko@heiko-TITAN:~/Schreibtisch/Repos/kivy_apps/kivy_sail_rightofway/bin$ adb devices
+# List of devices attached
+# b5ae28e1        unauthorized
+
+# tablet
+# adb -s b5ae28e1 install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-release.aab
+
+# /home/heiko/Schreibtisch/Repos/kivy_apps/kivy_sail_rightofway/bin/sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug_2024.apk
+
+# adb -s b5ae28e1 install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug_2024.apk
+
+
+adb -s b5ae28e1 install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug.apk
 
 ```
 
