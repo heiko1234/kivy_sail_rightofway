@@ -11,6 +11,10 @@ assets/
 .buildozer/
 .bin/
 bin/
+.keystores/
+.keystores
+keystores/
+keystores
 
 # Distribution / packaging
 .Python

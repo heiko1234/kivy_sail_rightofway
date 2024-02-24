@@ -340,7 +340,7 @@ adb -s b5ae28e1 install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug.apk
 
 ``` bash
 
-# release for market: app store
+# release for market: app store    # build of .aab  file
 buildozer android release
 
 ```
