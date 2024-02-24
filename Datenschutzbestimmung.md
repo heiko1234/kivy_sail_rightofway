@@ -36,9 +36,16 @@ Die App wird keine Nutzerdaten verkaufen.
 Die App wird keine Nutzerdaten an Dritte weitergeben oder verkaufen oder übertragen.
 
 
+Für den Spielbetrieb wird keine Internetverbindung benötigt.
+
+Die App wird keine Internetverbindung aufbauen.
+
+Die App speichert die individuellen Einstellungen (Anzahl der Fragen und Frage Modus) in einem Config File auf dem Smartphone.
 
 
-Um es einmal klar zu sagen:
+
+
+Um es einmal ganz einfach und klar zu sagen:
 
 Auf deinem Smartphone werden nur deine App Einstellungen 'FrageModus' und 'Anzahl der Frage' in einem Config File gespeichert.
 
