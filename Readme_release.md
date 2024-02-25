@@ -50,8 +50,7 @@ buildozer android release
 Do not forget to replace the keystore and the alias with your own values.
 my_password needs to be replaced with the password of the keystore
 
-P4A_RELEASE_KEYSTORE=./keystores/android_keystore_2024.jks P4A_RELEASE_KEYSTORE_PASSWD="my_password" P4A_RELEASE_KEYALIAS="android_keystore_2024" P4A_RELEASE_KEYALIAS_PASSWD="my_password" buildozer android release
-
+P4A_RELEASE_KEYSTORE=./keystores/android_keystore_2024.jks P4A_RELEASE_KEYSTORE_PASSWD="my_password" P4A_RELEASE_KEYALIAS="android_key" P4A_RELEASE_KEYALIAS_PASSWD="my_password" buildozer android release
 
 
 
