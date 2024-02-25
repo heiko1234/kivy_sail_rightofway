@@ -16,6 +16,10 @@ bin/
 keystores/
 keystores
 
+# keys
+release_keys.md
+
+
 # Distribution / packaging
 .Python
 build/

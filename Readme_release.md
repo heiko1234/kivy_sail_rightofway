@@ -54,7 +54,6 @@ P4A_RELEASE_KEYSTORE=./keystores/android_keystore_2024.jks P4A_RELEASE_KEYSTORE_
 
 
 
-
 Generate an upload key and keystore
 
 If you don't already have an upload key, which is useful when configuring Play App Signing, you can generate one using Android Studio as follows:
