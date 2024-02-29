@@ -297,6 +297,8 @@ adb devices
 
 
 # release for market: app store
+# # manual copy in .buildozwer .... the keystore file
+
 buildozer android release
 
 
@@ -344,6 +346,13 @@ adb -s b5ae28e1 install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug.apk
 buildozer android release
 
 ```
+
+
+# Deploy the release version to playstore 
+
+- https://play.google.com/console/
+
+
 
 
 
