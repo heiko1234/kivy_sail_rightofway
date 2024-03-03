@@ -295,6 +295,8 @@ adb logcat -s python
 # get a list of devices
 adb devices
 
+adb logcat -s python
+
 
 # release for market: app store
 # # manual copy in .buildozwer .... the keystore file
@@ -327,6 +329,17 @@ adb -s 29477c1e install sail_rightofway-1.0-arm64-v8a_armeabi-v7a-debug.apk
 # tablet
 adb -s b5ae28e1 install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug.apk
 adb -s b5ae28e1 install sail_rightofway-1.0-arm64-v8a_armeabi-v7a-debug.apk
+adb -s b5ae28e1 install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug_2024.apk   # works
+adb -s b5ae28e1 install sail_rightofway-1.0-arm64-v8a_armeabi-v7a-debug_api_33.apk  # does not work
+# adb -s b5ae28e1 install sail_rightofway-1.0-arm64-v8a_armeabi-v7a-release.aab   # Does not work
+
+# for error logging
+adb -s 29477c1e logcat *:S python:D
+adb -s b5ae28e1 logcat *:S python:D
+
+
+
+```
 
 
 # (.venv) heiko@heiko-TITAN:~/Schreibtisch/Repos/kivy_apps/kivy_sail_rightofway/bin$ adb devices

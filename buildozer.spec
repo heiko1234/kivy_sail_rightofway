@@ -38,7 +38,10 @@ source.include_patterns = assets/*,images/*.png
 
 # (str) Application versioning (method 1)
 # version = 1.0
-version = 0.1
+# version = 0.1
+# TODO
+version = 1.0
+
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -56,9 +59,11 @@ version = 0.1
 # requirements = python3==3.10.6, kivy==2.1.0, kivymd==1.1.1, pillow==9.5.0, pyyaml==6.0.1, pysdl2==0.9.16, pysdl2-dll==2.28.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15, cython==0.29.36, pyjnius==1.5.0
 
 # requirements = python3==3.10.6, kivy==2.1.0, kivymd==1.0.2, pillow==9.5.0, python-dotenv==0.21.1, sdl2_ttf==2.0.15, pyjnius==1.4.2
-requirements = python3==3.10.6, kivy==2.2.1, kivymd==1.0.2, pillow==9.5.0, python-dotenv==0.21.1
-
-
+# updated while app on android not running anymore, 01.03.2024
+# requirements = python3==3.10.6, kivy==2.2.1, kivymd==1.0.2, pillow==9.5.0, python-dotenv==0.21.1
+# requirements = python3==3.10.6, kivy==2.2.1, kivymd==1.2.0, pillow==10.2.0, python-dotenv==0.21.1
+# requirements = python3==3.10.6, kivy==2.2.1, kivymd==1.2.0, pillow==9.5.0 python-dotenv==0.21.1
+requirements = python3==3.10.6, kivy==2.1.0, kivymd==1.2.0, pillow==9.5.0 python-dotenv==0.21.1
 
 
 # (str) Custom source folders for requirements
@@ -101,8 +106,8 @@ osx.python_version = 3
 # osx.kivy_version = 1.9.1
 # osx.kivy_version = 2.0.0
 # osx.kivy_version = 2.1.0
-# osx.kivy_version = 2.2.1
-osy.kivy_version = 2.1.0
+osx.kivy_version = 2.2.1
+# osy.kivy_version = 2.1.0
 
 
 #
