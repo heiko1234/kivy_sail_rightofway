@@ -101,6 +101,9 @@ class Haftungindow(Screen):
         self.manager.current = "quizwindow"
         self.manager.transition.direction="left"
 
+    def hyperlink_open(self, *args):
+        webbrowser.open("https://github.com/heiko1234/kivy_sail_rightofway/blob/main/Datenschutzbestimmung.md")
+
 
 class AnleitungWindow(Screen):
 
@@ -262,6 +265,9 @@ class QuizWindow(Screen):
     def any_function(self, *args):
         pass
 
+    def hyperlink_issues_open(self, *args):
+        webbrowser.open("https://github.com/heiko1234/kivy_sail_rightofway/issues")
+
     def play_crashsound(self, *args):
         sound = SoundLoader.load("assets/sounds/boat_hit.wav")
         if sound:
@@ -291,7 +297,7 @@ class QuizWindow(Screen):
     def switch_to_haftungsview(self, *args):
         self.manager.current = "haftungwindow"
         self.manager.transition.direction="right"
-        
+
     def switch_to_anleitungview(self, *args):
         self.manager.current = "anleitungwindow"
         self.manager.transition.direction="right"

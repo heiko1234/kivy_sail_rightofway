@@ -165,6 +165,18 @@ MDScreenManager:
                     text_size: self.width, None
                     text: "Datenschutz \n \n Auf deinem Smartphone werden nur deine App Einstellungen 'FrageModus' und 'Anzahl der Frage' in einem Config File gespeichert. Es werden keine User Profile, Nutzer Daten, Nutzer Verhalten oder anderes aufgezeichnet, gespeichert, gestreamt oder an Dritte übertragen. Die App zeichnet auch keine sonstiges Nutzerverhalten ausserhalb der App auf. \n Der Code ist Open Source und kann in Github (https://github.com/heiko1234/kivy_sail_rightofway) eingesehen werden. \n \n Viel Spass beim Spielen."
 
+                # TODO
+                MDRoundFlatIconButton:
+                    text: "Datenschutz"
+                    icon: "scale-balance"
+                    theme_text_color: "Custom"
+                    text_color: "blue"
+                    line_color: "blue"
+                    halign: "center"
+                    size_hint: (0.1, 0.1)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                    on_release: 
+                        root.hyperlink_open()
 
 
 <AnleitungWindow>:
@@ -724,8 +736,9 @@ MDScreenManager:
                 #     pass
                 on_release:
                     # TODO: open browser
-                    import webbrowser
-                    webbrowser.open("https://github.com/heiko1234/kivy_sail_rightofway/issues")
+                    # import webbrowser
+                    # webbrowser.open("https://github.com/heiko1234/kivy_sail_rightofway/issues")
+                    root.hyperlink_issues_open()
 
             MDNavigationDrawerItem:
                 icon: "github"

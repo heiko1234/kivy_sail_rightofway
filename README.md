@@ -310,15 +310,23 @@ cd ./bin
 # # 222be3df
 # # 29477c1e
 
+
+# problems with installing the apk to android smartphone
+adb shell
+settings put global package_verifier_enable 0
+
 # transfer apk from ./bin/ folder:
 # adb -s 29477c1e install sailcommander-0.1-arm64-v8a_armeabi-v7a-debug.apk
 
 # mobile
+# adb -s 29477c1e install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug_2024.apk
 adb -s 29477c1e install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug.apk
+adb -s 29477c1e install sail_rightofway-1.0-arm64-v8a_armeabi-v7a-debug.apk
 
 
 # tablet
 adb -s b5ae28e1 install sail_rightofway-0.1-arm64-v8a_armeabi-v7a-debug.apk
+adb -s b5ae28e1 install sail_rightofway-1.0-arm64-v8a_armeabi-v7a-debug.apk
 
 
 # (.venv) heiko@heiko-TITAN:~/Schreibtisch/Repos/kivy_apps/kivy_sail_rightofway/bin$ adb devices

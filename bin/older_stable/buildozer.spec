@@ -37,7 +37,6 @@ source.include_patterns = assets/*,images/*.png
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-# version = 1.0
 version = 0.1
 
 # (str) Application versioning (method 2)
@@ -136,17 +135,11 @@ android.permissions = android.permission.INTERNET, (name=android.permission.WRIT
 # (list) features (adds uses-feature -tags to manifest)
 #android.features = android.hardware.usb.host
 
-
-# TODO
 # (int) Target Android API, should be as high as possible.
-android.api = 33
-# android.api = 31
-
+#android.api = 31
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 21
-android.minapi = 33
-# android.minapi = 31
 
 # (int) Android SDK version to use
 #android.sdk = 20
@@ -373,7 +366,6 @@ android.allow_backup = True
 
 # (str) python-for-android branch to use, defaults to master
 #p4a.branch = master
-# p4a.branch = develop
 
 # (str) python-for-android specific commit to use, defaults to HEAD, must be within p4a.branch
 #p4a.commit = HEAD
